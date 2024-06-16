@@ -1,0 +1,32 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.closeButton {
+    width: 30px;
+    height: 25px;
+    border: none;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+  
+.closeButton::before,
+.closeButton::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: $base-white; 
+    transition: $transition-hover;
+}
+  
+.closeButtonShow::before {
+    transform: rotate(45deg);
+    transition: $transition-hover;
+}
+  
+.closeButtonShow::after {
+    transform: rotate(135deg);
+    transition: $transition-hover;
+}

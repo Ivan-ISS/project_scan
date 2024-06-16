@@ -1,0 +1,36 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.modalContentMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15vh;
+
+    .navigation {
+        font-weight: 400;
+        font-size: 16px;
+    
+        .list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 26px;
+            text-align: center;
+    
+            .link {
+                color: $base-white;
+                transition: $transition-hover;
+    
+                &:hover {
+                    text-shadow: $text-shadow-white-hover;
+                }
+            }
+        }
+    }
+
+    .accountControlPanel {
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+    }
+}

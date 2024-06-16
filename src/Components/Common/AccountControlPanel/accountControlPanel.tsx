@@ -1,4 +1,5 @@
 import styles from './accountControlPanel.module.scss';
+import { buttonName } from '../../../data';
 import { useNavigate } from 'react-router-dom';
 import LogUpButton from '../Buttons/LogUpButton/logUpButton';
 import SignUpButton from '../Buttons/SignUpButton/signUpButton';
@@ -13,9 +14,9 @@ export default function AccountControlPanel() {
 
     return (
         <div className={styles.accountControlPanel}>
-            <SignUpButton text={'Зарегистрироваться'} size={'desktop'}/>
+            <SignUpButton text={buttonName.signUpButton} size={'desktop'}/>
             <div className={styles.border}></div>
-            <LogUpButton text={'Войти'} size={'desktop'} onClick={handleClickLogUp}/>
+            <LogUpButton text={buttonName.logUpButton} size={'desktop'} onClick={handleClickLogUp}/>
         </div>
     );
 }

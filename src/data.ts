@@ -1,5 +1,6 @@
 import { INavigationItems } from './types/dataTypes';
 import { ITextLine } from './types/dataTypes';
+import { IButtonName } from './types/dataTypes';
 
 // Данные навигации
 export const navigationItems: INavigationItems[] = [
@@ -18,3 +19,9 @@ export const contactItems: ITextLine[] = [
 export const legalInformationItems: ITextLine[] = [
     { name: 'copyrights', text: 'Copyright. 2022' },
 ];
+
+// Наименования кнопок
+export const buttonName: IButtonName = {
+    signUpButton: 'Зарегистрироваться',
+    logUpButton: 'Войти'
+};
