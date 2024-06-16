@@ -17,16 +17,16 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 35px;
     }
 }
 
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
 
     .header {
         
         .container {
-            min-height: 70px;
-            padding: 10px 15px;
+            padding: 0 15px;
         }
     }
-} */
+}

@@ -1,0 +1,26 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.logUpButton {
+    cursor: pointer;
+    border-radius: 5px;
+    background: $base-light-green;
+    font-family: inherit;
+    font-weight: 500;
+    transition: $transition-hover;
+
+    &:hover {
+        opacity: $button-opacity-hover;
+    }
+}
+
+.desktop {
+    font-size: 14px;
+    padding: 5px 11px;
+}
+
+.mobile {
+    font-size: 20px;
+    padding: 14px 117px;
+}

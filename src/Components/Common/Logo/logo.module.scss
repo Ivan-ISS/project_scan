@@ -1,0 +1,19 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.wrapLogo {
+
+    .logo {
+        max-width: 141px;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .wrapLogo {
+
+        .logo {
+            max-width: 111px;
+        }
+    }
+}

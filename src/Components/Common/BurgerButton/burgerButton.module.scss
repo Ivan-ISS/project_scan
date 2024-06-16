@@ -1,0 +1,29 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.burgerWrap {
+    display: none;
+
+    .burgerButton {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        background-color: transparent;
+        height: 25px;
+        cursor: pointer;
+
+        .band {
+            display: block;
+            width: 30px;
+            height: 5px;
+            background: $base-green;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .burgerWrap {
+        display: block;
+    }
+}
