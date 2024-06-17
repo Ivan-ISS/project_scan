@@ -1,9 +1,20 @@
-
+import styles from '../../styles/pageStyles/authorization.module.scss';
+import { titleContent, imagePaths } from '../../data';
+import PageTitle from '../Common/Titles/PageTitle/pageTitle';
+import Picture from '../Common/Picture/picture';
 
 export default function Authorization() {
     return (
-            <>
-                Здесь будет контент AUTHORIZATION
-            </>
+        <section className={styles.authPanel}>
+            <div className={styles.staticBlock}>
+                <PageTitle titleContent={titleContent.authorizationPage[0]} size={'sizeDesktopRest'}/>
+                <div className={styles.imageContainer}>
+                    <Picture
+                        src={imagePaths.authorizationPage[0].src}
+                        alt={imagePaths.authorizationPage[0].alt}
+                    />
+                </div>
+            </div>
+        </section>
     );
 }

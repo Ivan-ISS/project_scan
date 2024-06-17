@@ -12,3 +12,27 @@ export interface IButtonName {
     signUpButton: 'Зарегистрироваться';
     logUpButton: 'Войти';
 }
+
+export interface IButtonNetworkName {
+    networkName: string;
+    pathToIcon: string;
+}
+
+export interface ITitleContent {
+    homePage: string[];
+    authorizationPage: string[];
+    searchPage: string[];
+    resultsPage: string[];
+}
+
+export interface IImagePath {
+    src: string;
+    alt: string;
+}
+
+export interface IImagePaths {
+    homePage: IImagePath[];
+    authorizationPage: IImagePath[];
+    searchPage: IImagePath[];
+    resultsPage: IImagePath[];
+}

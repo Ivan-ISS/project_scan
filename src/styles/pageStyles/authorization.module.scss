@@ -1,0 +1,14 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.authPanel {
+
+    .staticBlock {
+        max-width: 750px;
+    }
+
+    .imageContainer {
+        margin: 14px 112px 0;
+        max-width: 322px;
+    }
+}

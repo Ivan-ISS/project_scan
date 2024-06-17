@@ -4,11 +4,11 @@ export interface LogoProps{
     src: string;
 }
 
-export default function Button({ src, ...props }: LogoProps) {
+export default function Logo({ src, ...props }: LogoProps) {
 
     return (
         <div {...props} className={styles.wrapLogo}>
-            <img className={styles.logo} src={src} alt="logo"/>
+            <img className={styles.logo} src={src} alt={'logo'}/>
         </div>
     );
 }

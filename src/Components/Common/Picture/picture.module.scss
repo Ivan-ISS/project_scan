@@ -1,0 +1,8 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
