@@ -25,7 +25,7 @@ export default function Modal({ closeModal, insert, ...props }: ModalProps) {
             <div className={`${styles.overlay} ${show ? styles.overlayShow : null}`}></div>
             <div {...props} className={`${styles.modal} ${show ? styles.modalShow : null}`}>
                 <div className={styles.topPanel}>
-                    <Logo src={'images/svg/logo-white.svg'}/>
+                    <Logo src={'images/svg/whiteLogo.svg'}/>
                     <CloseButton show={show} onClick={handleClick}></CloseButton>
                 </div>
                 {insert}

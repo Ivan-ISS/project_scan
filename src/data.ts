@@ -4,6 +4,7 @@ import { IButtonName } from './types/dataTypes';
 import { IButtonNetworkName } from './types/dataTypes';
 import { ITitleContent } from './types/dataTypes';
 import { IImagePaths } from './types/dataTypes';
+import { IlogUpFormFields } from './types/dataTypes';
 
 // Данные навигации
 export const navigationItems: INavigationItems[] = [
@@ -26,13 +27,14 @@ export const legalInformationItems: ITextLine[] = [
 // Наименования кнопок
 export const buttonName: IButtonName = {
     signUpButton: 'Зарегистрироваться',
-    logUpButton: 'Войти'
+    logUpButton: 'Войти',
+    restorePassword: 'Восстановить пароль',
 };
 
-export const buttonNetworkName: IButtonNetworkName[] = [
-    { networkName: 'Google', pathToIcon: '' },
-    { networkName: 'Facebook', pathToIcon: '' },
-    { networkName: 'Yandex', pathToIcon: '' },
+export const buttonNetworkNames: IButtonNetworkName[] = [
+    { networkName: 'Google', pathToIcon: 'images/svg/googleIcon.svg' },
+    { networkName: 'Facebook', pathToIcon: 'images/svg/facebookIcon.svg' },
+    { networkName: 'Yandex', pathToIcon: 'images/svg/yandexIcon.svg' },
 ];
 
 // Заголовки страниц
@@ -56,7 +58,7 @@ export const titleContent: ITitleContent = {
 };
 
 // Пути до иллюстраций
-export const imagePaths: IImagePaths = { 
+export const imagePaths: IImagePaths = {
     homePage: [
 
     ],
@@ -64,6 +66,10 @@ export const imagePaths: IImagePaths = {
         {
             src: 'images/svg/auth.svg',
             alt: 'image key',
+        },
+        {
+            src: 'images/svg/lock.svg',
+            alt: 'image lock',
         },
     ],
     searchPage: [
@@ -73,3 +79,9 @@ export const imagePaths: IImagePaths = {
 
     ],
 };
+
+// Поля формы авторизации
+export const logUpFormFields: IlogUpFormFields[] = [
+    { name: 'Логин или номер телефона', type: 'text', varName: 'login' },
+    { name: 'Пароль', type: 'password', varName: 'password' },
+];

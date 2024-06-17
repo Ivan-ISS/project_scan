@@ -1,12 +1,13 @@
-import styles from './logUpButton.module.scss';
+import styles from './primaryButton.module.scss';
 import { ButtonHTMLAttributes } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     text: string;
-    size: 'desktop' | 'mobile';
+    fontSize: 'big' | 'small';
+    isDisabled?: boolean;
 }
 
-export default function LogUpButton({ text, size, ...props }: ButtonProps) {
+export default function PrimaryButton({ text, fontSize, ...props }: ButtonProps) {
 
     const handleClickBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (props.onClick) {
@@ -18,7 +19,7 @@ export default function LogUpButton({ text, size, ...props }: ButtonProps) {
         <button
             {...props}
             onClick={handleClickBtn}
-            className={`${styles.logUpButton} ${styles[size]}`}
+            className={`${styles.primaryButton} ${styles[fontSize]}`}
         >
             {text}
         </button>

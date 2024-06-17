@@ -1,0 +1,36 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.field {
+    font-size: 16px;
+    color: $base-gray;
+    align-self: center;
+    width: 100%;
+
+    .label {
+        display: block;
+        width: fit-content;
+        margin-bottom: 15px;
+    }
+
+    .input {
+        padding: 12px 19px;
+        outline: none;
+        width: 100%;
+        min-width: 150px;
+        min-height: 43px;
+        border: 1px solid rgba($base-black, 0.4);
+        border-radius: 5px;
+        box-shadow: $box-shadow-small-element;
+        transition: $transition-hover;
+
+        &:focus {
+            border-color: rgba($base-black, 0.4);
+            box-shadow: 0 0 0 2px rgba($base-black, 0.4);
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+}

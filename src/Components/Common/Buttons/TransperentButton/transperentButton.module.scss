@@ -1,0 +1,40 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.transperentButton {
+    cursor: pointer;
+    width: 100%;
+    padding: 0 25px 10px;
+    font-size: 16px;
+    background: transparent;
+    font-family: inherit;
+    font-weight: 400;
+    transition: $transition-hover;
+
+    &:hover {
+        opacity: 1;
+        color: $base-green;
+        border-bottom: solid 2px rgba($base-green, 0.4);
+    }
+}
+
+.active {
+    opacity: 1;
+    color: $base-green;
+    border-bottom: solid 2px rgba($base-green, 0.4);
+}
+
+.inactive {
+    opacity: 0.4;
+    color: $base-black;
+    border-bottom: solid 2px rgba($base-black, 0.4);
+}
+
+@media (max-width: 1024px) {
+
+    .transperentButton {
+        font-size: 14px;
+        padding: 0 15px 10px;
+    }
+}

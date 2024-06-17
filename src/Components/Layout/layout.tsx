@@ -6,7 +6,7 @@ import Content from '../Content/content';
 import Footer from '../Footer/footer';
 import Logo from '../Common/Logo/logo';
 import Navigation from '../Common/Navigation/navigation';
-import AccountControlPanel from '../Common/AccountControlPanel/accountControlPanel';
+import AccountControlPanel from '../AccountControlPanel/accountControlPanel';
 import BurgerButton from '../Common/Buttons/BurgerButton/burgerButton';
 import TextLines from '../Common/TextLines/textLines';
 import Modal from '../Common/Modal/modal';
@@ -34,7 +34,7 @@ export default function Layout() {
             </main>
             <Footer>
                 <Link to={routes.home()}>
-                    <Logo src={'images/svg/logo-white.svg'} />
+                    <Logo src={'images/svg/whiteLogo.svg'} />
                 </Link>
                 <div className={styles.footerInfo}>
                     <TextLines textLines={contactItems}/>

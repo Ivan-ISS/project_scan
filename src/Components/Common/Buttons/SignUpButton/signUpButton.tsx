@@ -6,7 +6,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     size: 'desktop' | 'mobile';
 }
 
-export default function Button({ text, size, ...props }: ButtonProps) {
+export default function SignUpButton({ text, size, ...props }: ButtonProps) {
 
     const handleClickBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (props.onClick) {

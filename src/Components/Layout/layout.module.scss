@@ -32,6 +32,19 @@
         .main {
 
             .container {
+                padding: 70px 15px 65px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .layout {
+
+        .main {
+
+            .container {
                 padding: 20px 15px 65px;
             }
         }

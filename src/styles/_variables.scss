@@ -1,5 +1,7 @@
 
-$box-shadow-container: 1px 2px 5px rgba($base-black, 0.4);
+$box-shadow-container: 0 0 20px 0 rgba($base-black, 0.15);
+$box-shadow-small-element: 0 0 20px 0 rgba($base-black, 0.05);
+
 $text-shadow-black-hover: 
     0.2px 0.2px 0.5px rgba(0, 0, 0, 0.355),
     -0.2px -0.2px 0.5px rgba(0, 0, 0, 0.355),

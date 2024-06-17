@@ -1,9 +1,9 @@
 import styles from './accountControlPanel.module.scss';
-import { buttonName } from '../../../data';
+import { buttonName } from '../../data';
 import { useNavigate } from 'react-router-dom';
-import LogUpButton from '../Buttons/LogUpButton/logUpButton';
-import SignUpButton from '../Buttons/SignUpButton/signUpButton';
-import routes from '../../../routes';
+import LogUpButton from '../Common/Buttons/LogUpButton/logUpButton';
+import SignUpButton from '../Common/Buttons/SignUpButton/signUpButton';
+import routes from '../../routes';
 
 export default function AccountControlPanel() {
     const navigate = useNavigate();

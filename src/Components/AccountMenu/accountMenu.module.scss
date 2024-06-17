@@ -1,0 +1,81 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.accountMenu {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 25px 25px 39px;
+    border-radius: 10px;
+    box-shadow: $box-shadow-container;
+    background: $base-white;
+    width: 100%;
+    max-width: 430px;
+
+    .imageContainer {
+        position: absolute;
+        top: -55px;
+        left: -53px;
+        width: 75px;
+        z-index: 1;
+    }
+
+    .topPanel {
+        display: flex;
+        column-gap: 15px;
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+
+    .restorePasswordButton {
+        margin: 15px 0 30px;
+        align-self: center;
+        font-family: inherit;
+        color: $base-blue;
+        font-size: 14px;
+        background: transparent;
+        padding: 0 0 1px 0;
+        border-bottom: solid 1px $base-blue;
+        width: fit-content;
+        cursor: pointer;
+
+        &:hover {
+            border-bottom: solid 1px transparent;
+        }
+    }
+
+    .bottomPanel {
+
+        .labelNetwork {
+            font-size: 16px;
+            color: $base-gray;
+            margin-bottom: 15px;
+        }
+        
+        .networkButtons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .accountMenu {
+        min-width: 355px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .accountMenu {
+        margin-top: 75px;
+        min-width: 300px;
+
+        .imageContainer {
+            top: -80px;
+            left: 80px;
+        }
+    }
+}

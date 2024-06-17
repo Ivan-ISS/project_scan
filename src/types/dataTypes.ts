@@ -11,6 +11,7 @@ export interface ITextLine {
 export interface IButtonName {
     signUpButton: 'Зарегистрироваться';
     logUpButton: 'Войти';
+    restorePassword: 'Восстановить пароль';
 }
 
 export interface IButtonNetworkName {
@@ -35,4 +36,10 @@ export interface IImagePaths {
     authorizationPage: IImagePath[];
     searchPage: IImagePath[];
     resultsPage: IImagePath[];
+}
+
+export interface IlogUpFormFields {
+    name: string;
+    type: string;
+    varName: string;
 }

@@ -2,6 +2,8 @@
 @import "/src/styles/_variables";
 
 .authPanel {
+    display: flex;
+    column-gap: 70px;
 
     .staticBlock {
         max-width: 750px;
@@ -10,5 +12,40 @@
     .imageContainer {
         margin: 14px 112px 0;
         max-width: 322px;
+    }
+
+    .mobileImageContainer {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .authPanel {
+        
+        .imageContainer {
+            margin: 49px 0 0;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .authPanel {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 50px;
+
+        .imageContainer {
+            margin: 0;
+        }
+        
+        .desktopImageContainer {
+            display: none;
+        }
+
+        .mobileImageContainer {
+            display: block;
+        }
     }
 }

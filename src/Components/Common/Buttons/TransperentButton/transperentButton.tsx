@@ -1,12 +1,12 @@
-import styles from './logUpButton.module.scss';
+import styles from './transperentButton.module.scss';
 import { ButtonHTMLAttributes } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     text: string;
-    size: 'desktop' | 'mobile';
+    isActive?: boolean;
 }
 
-export default function LogUpButton({ text, size, ...props }: ButtonProps) {
+export default function TransperentButton({ text, isActive, ...props }: ButtonProps) {
 
     const handleClickBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (props.onClick) {
@@ -18,7 +18,7 @@ export default function LogUpButton({ text, size, ...props }: ButtonProps) {
         <button
             {...props}
             onClick={handleClickBtn}
-            className={`${styles.logUpButton} ${styles[size]}`}
+            className={`${styles.transperentButton} ${isActive ? styles.active : styles.inactive}`}
         >
             {text}
         </button>
