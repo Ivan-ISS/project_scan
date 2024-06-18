@@ -38,7 +38,7 @@ export interface IImagePaths {
     resultsPage: IImagePath[];
 }
 
-export interface IlogUpFormFields {
+export interface IFormFields {
     name: string;
     type: string;
     varName: string;

@@ -25,3 +25,7 @@ export default function PrimaryButton({ text, fontSize, ...props }: ButtonProps)
         </button>
     );
 }
+
+
+// const PrimaryButton: FunctionComponent<ButtonProps> = ({ text, fontSize, ...props }) => {           ===> одно и то же
+// export default function PrimaryButton<P extends ButtonProps>({ text, fontSize, ...props }: P) {

@@ -2,6 +2,7 @@
 @import "/src/styles/_variables";
 
 .field {
+    position: relative;
     font-size: 16px;
     color: $base-gray;
     align-self: center;
@@ -28,6 +29,25 @@
             border-color: rgba($base-black, 0.4);
             box-shadow: 0 0 0 2px rgba($base-black, 0.4);
         }
+    }
+
+    .invalid {
+        box-shadow: 0 0 10px 0 rgba($error-red, 0.33);
+        border: 1px solid $error-red;
+
+        &:focus {
+            box-shadow: 0 0 10px 0 rgba($error-red, 0.33);
+            border: 1px solid $error-red;
+        }
+    }
+
+    .errorPanel {
+        position: absolute;
+        top: 80px;
+        width: 100%;
+        text-align: center;
+        color: $error-red;
+        font-size: 14px;
     }
 }
 

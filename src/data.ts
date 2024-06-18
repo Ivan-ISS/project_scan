@@ -4,7 +4,7 @@ import { IButtonName } from './types/dataTypes';
 import { IButtonNetworkName } from './types/dataTypes';
 import { ITitleContent } from './types/dataTypes';
 import { IImagePaths } from './types/dataTypes';
-import { IlogUpFormFields } from './types/dataTypes';
+import { IFormFields } from './types/dataTypes';
 
 // Данные навигации
 export const navigationItems: INavigationItems[] = [
@@ -81,7 +81,7 @@ export const imagePaths: IImagePaths = {
 };
 
 // Поля формы авторизации
-export const logUpFormFields: IlogUpFormFields[] = [
+export const logUpFormFields: IFormFields[] = [
     { name: 'Логин или номер телефона', type: 'text', varName: 'login' },
     { name: 'Пароль', type: 'password', varName: 'password' },
 ];

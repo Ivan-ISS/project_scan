@@ -18,6 +18,11 @@
     }
 }
 
+.primaryButton:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
 .big {
     font-size: 22px;
     font-weight: 500;
