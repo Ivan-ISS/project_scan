@@ -9,6 +9,7 @@ interface IRoutes {
     search: () => string;
     results: () => string;
     urlLogin: () => string;
+    urlUserInfo: () => string;
 }
 
 const routes: IRoutes = {
@@ -19,6 +20,7 @@ const routes: IRoutes = {
     search: () => '/search',
     results: () => '/results',
     urlLogin: () => `${API_HOST}/account/login`,
+    urlUserInfo: () => `${API_HOST}/account/info`,
 };
 
 export default routes;

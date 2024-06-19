@@ -1,6 +1,4 @@
 export interface IUserInfoResponse {
-    eventFiltersInfo: {
-        usedCompanyCount: number;
-        companyLimit: number;
-    }
+    usedCompanyCount: number;
+    companyLimit: number;
 }

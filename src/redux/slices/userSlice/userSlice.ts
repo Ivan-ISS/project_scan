@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IUserInfoResponse } from '../../../types/userInfoTypes';
+import routes from '../../../routes';
 
 export interface FetchUserInfoArgs {
     tokenAccess: string;
@@ -10,14 +11,14 @@ export interface FetchUserInfoError {
     message: string;
 }
 
-export const fetchUserInfo = createAsyncThunk<IUserInfoResponse, FetchUserInfoError, { rejectValue: FetchUserInfoError | undefined } >(
+export const fetchUserInfo = createAsyncThunk<IUserInfoResponse, FetchUserInfoArgs, { rejectValue: FetchUserInfoError | undefined } >(
     'userInfo/fetch',
-    async (tokenAccess, thunkAPI) => {
+    async ({ tokenAccess }, thunkAPI) => {
         try {
-            const response = await fetch('', {
+            const response = await fetch(routes.urlUserInfo(), {
                 method: 'GET',
                 headers: {
-                    'Authorization': 'BearerToken'
+                    'Authorization': `Bearer ${tokenAccess}`
                 }
             });
 
@@ -61,6 +62,7 @@ export const userSlice = createSlice({
             addCase(fetchUserInfo.fulfilled, (state, action: PayloadAction<IUserInfoResponse>) => {
                 state.status = 'successfully';
                 state.eventFiltersInfo = action.payload;
+                console.log('state.eventFiltersInfo: ', state.eventFiltersInfo);
             }).
             addCase(fetchUserInfo.rejected, (state, action: PayloadAction<FetchUserInfoError | undefined>) => {
                 state.status = 'download failed';
