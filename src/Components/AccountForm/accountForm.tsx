@@ -41,7 +41,7 @@ export default function AccountForm({ fields }: AccountFormProps) {
                         type={field.type}
                         value={formData[field.varName]}
                         onChange={(value) => handleChange(field.varName, value)}
-                        onValidationChange={(isValid) => handleOnValidationChange(field.varName, isValid)}
+                        onValidationChange={(isValid) => handleOnValidationChange(field.varName, isValid)} // Вот как создаются функции, кот-е где то принимают на вход, то что указано впереди - (isValid). Эта функция возьмет это значение в компоненте в который передается, т.е. в инпуте обернутом HOC, ведь мы передаем всю эту стрелочную функцию. Она берет на вход isValid и возвращает ф-ю handleOnValidationChange
                     />
                 )}
             </div>

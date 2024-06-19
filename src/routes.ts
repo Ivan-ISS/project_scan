@@ -1,3 +1,6 @@
+export const BASE_URL = 'gateway.scan-interfax.ru';
+export const API_HOST = `${BASE_URL}/api/v1`;
+
 interface IRoutes {
     home: () => string;
     rates: () => string;
@@ -5,6 +8,7 @@ interface IRoutes {
     authorization: () => string;
     search: () => string;
     results: () => string;
+    urlLogin: () => string;
 }
 
 const routes: IRoutes = {
@@ -14,6 +18,7 @@ const routes: IRoutes = {
     authorization: () => '/authorization',
     search: () => '/search',
     results: () => '/results',
+    urlLogin: () => `${API_HOST}/account/login`,
 };
 
 export default routes;
