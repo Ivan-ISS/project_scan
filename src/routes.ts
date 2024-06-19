@@ -1,4 +1,4 @@
-export const BASE_URL = 'gateway.scan-interfax.ru';
+export const BASE_URL = 'https://gateway.scan-interfax.ru';
 export const API_HOST = `${BASE_URL}/api/v1`;
 
 interface IRoutes {

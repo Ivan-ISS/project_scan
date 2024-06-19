@@ -1,11 +1,8 @@
-import { IAuthResponse } from '../../../types/authTypes';
+import { IAuthResponse, IAuth } from '../../../types/authTypes';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import routes from '../../../routes';
 
-export interface fetchAuthArgs {
-    login: string;
-    password: string;
-}
+export interface fetchAuthArgs extends IAuth {}
 
 export interface FetchLoginError {
     message: string;
@@ -13,14 +10,14 @@ export interface FetchLoginError {
 
 export const loginUser = createAsyncThunk<IAuthResponse, fetchAuthArgs, { rejectValue: FetchLoginError | undefined }>(
     'auth/loginUser',
-    async (formData, thunkAPI) => {
+    async (authData, thunkAPI) => {
         try {
             const response = await fetch(routes.urlLogin(), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(authData)
             });
 
             if (!response.ok) {                                                             // Обрабатываем ошибки сервера
@@ -66,14 +63,12 @@ export const authSlice = createSlice({
                 state.status = 'successfully';
                 state.tokenAccess = action.payload.accessToken;
                 state.tokenExpire = action.payload.expire;
-                console.log(state, action);
             })
             .addCase(loginUser.rejected, (state, action: PayloadAction<FetchLoginError | undefined>)=> {
                 state.status = 'download failed';
                 if (action.payload) {
                     state.error = action.payload.message;
                 }
-                console.log(state, action);
             });
     }
 });

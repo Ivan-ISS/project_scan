@@ -1,6 +1,7 @@
 import styles from './accountForm.module.scss';
 import { buttonName } from '../../data';
 import { IFormFields } from '../../types/dataTypes';
+import { IAuth } from '../../types/authTypes';
 import { useState, FormEvent } from 'react';
 // import Input from '../Common/Input/input';
 import { InputWithValidation } from '../Common/Input/input';
@@ -9,12 +10,13 @@ import { createFieldsString, createFieldsBoolean } from '../../utils/configureFi
 
 export interface AccountFormProps {
     fields: IFormFields[];
+    handleAuthFormSubmit?: (formData: IAuth) => void;
 }
 
-export default function AccountForm({ fields }: AccountFormProps) {
+export default function AccountForm({ fields, handleAuthFormSubmit }: AccountFormProps) {
     const [ formData, setFormData ] = useState(createFieldsString(fields));
     const [ formValidation, setformValidation ] = useState(createFieldsBoolean(fields));
-    const formIsValid = formValidation.login || formValidation.password;
+    const formIsValid = Object.values(formValidation).some(value => value); // проверка на formValidation.login || formValidation.password;
 
     const handleChange = (fieldName: string, value: string) => {
         setFormData(prevData => ({ ...prevData, [fieldName]: value }));
@@ -29,6 +31,7 @@ export default function AccountForm({ fields }: AccountFormProps) {
         console.log(formData);
         console.log(formValidation);
         console.log(formIsValid);
+        handleAuthFormSubmit && handleAuthFormSubmit({ login: formData.login, password: formData.password });
     };
 
     return (
