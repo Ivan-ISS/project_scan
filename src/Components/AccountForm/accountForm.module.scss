@@ -11,6 +11,14 @@
         flex-direction: column;
         row-gap: 20px;
     }
+
+    .errorPanel {
+        margin-top: -20px;
+        width: 100%;
+        text-align: center;
+        color: $error-red;
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 767px) {

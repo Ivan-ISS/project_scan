@@ -10,10 +10,12 @@ import { createFieldsString, createFieldsBoolean } from '../../utils/configureFi
 
 export interface AccountFormProps {
     fields: IFormFields[];
+    hasError?: boolean;
+    error?: string;
     handleAuthFormSubmit?: (formData: IAuth) => void;
 }
 
-export default function AccountForm({ fields, handleAuthFormSubmit }: AccountFormProps) {
+export default function AccountForm({ fields, hasError, error, handleAuthFormSubmit }: AccountFormProps) {
     const [ formData, setFormData ] = useState(createFieldsString(fields));
     const [ formValidation, setformValidation ] = useState(createFieldsBoolean(fields));
     const formIsValid = Object.values(formValidation).some(value => value); // проверка на formValidation.login || formValidation.password;
@@ -48,8 +50,8 @@ export default function AccountForm({ fields, handleAuthFormSubmit }: AccountFor
                     />
                 )}
             </div>
-            {/* { commentError ? <div className={styles.errorPanel} >{commentError}</div> : null } */}
             <PrimaryButton text={buttonName.logUpButton} fontSize={'big'} type="submit" disabled={formIsValid}/>
+            { hasError ? <div className={styles.errorPanel}>{error}</div> : null }
         </form>
     );
 }

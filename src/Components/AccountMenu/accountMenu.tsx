@@ -1,7 +1,8 @@
 import styles from './accountMenu.module.scss';
 import { buttonName, imagePaths, logUpFormFields, buttonNetworkNames } from '../../data';
 import { IAuth } from '../../types/authTypes';
-import { useAppDispatch } from '../../redux/store';
+import { useAppSelector, useAppDispatch } from '../../redux/store';
+import { selectAuthError } from '../../redux/slices/authSlice/authSelector';
 import { loginUser } from '../../redux/slices/authSlice/authSlice';
 import Picture from '../Common/Picture/picture';
 import TransperentButton from '../Common/Buttons/TransperentButton/transperentButton';
@@ -10,6 +11,7 @@ import IconButton from '../Common/Buttons/IconButton/iconButton';
 
 export default function AccountMenu() {
     const dispatch = useAppDispatch();
+    const authError = useAppSelector(selectAuthError);
 
     const handleFormSubmit = (formData: IAuth) => {
         dispatch(loginUser(formData));
@@ -21,7 +23,7 @@ export default function AccountMenu() {
                 <TransperentButton isActive={true} text={buttonName.logUpButton}/>
                 <TransperentButton isActive={false} text={buttonName.signUpButton}/>
             </div>
-            <AccountForm fields={logUpFormFields} handleAuthFormSubmit={handleFormSubmit}/>
+            <AccountForm fields={logUpFormFields} hasError={authError !== ''} error={authError} handleAuthFormSubmit={handleFormSubmit}/>
             <button className={styles.restorePasswordButton}>{buttonName.restorePassword}</button>
             <div className={styles.bottomPanel}>
                 <div className={styles.labelNetwork}>

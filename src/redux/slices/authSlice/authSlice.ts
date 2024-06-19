@@ -5,11 +5,12 @@ import routes from '../../../routes';
 export interface fetchAuthArgs extends IAuth {}
 
 export interface FetchLoginError {
+    errorCode: string;
     message: string;
 }
 
 export const loginUser = createAsyncThunk<IAuthResponse, fetchAuthArgs, { rejectValue: FetchLoginError | undefined }>(
-    'auth/loginUser',
+    'loginUser/fetch',
     async (authData, thunkAPI) => {
         try {
             const response = await fetch(routes.urlLogin(), {
@@ -21,16 +22,16 @@ export const loginUser = createAsyncThunk<IAuthResponse, fetchAuthArgs, { reject
             });
 
             if (!response.ok) {                                                             // Обрабатываем ошибки сервера
-                const error = await response.text();
-                console.log('Ошибка ответа (статус не 200): ', error);
-                return thunkAPI.rejectWithValue({ message: error } as FetchLoginError);     // Передаем эти ошибку сразу в reducer для дальнейшей работы с ними
-            }                                                                               // Ошибка здесь и из блока catch передаются только в loginUser.rejected
+                const error: FetchLoginError = await response.json();                       // Какого типа вернется ошибка error - мы не знаем, мы лишь строкой ниже присваиваем тип ошибке, кот-ю отдаем в reducer
+                console.log('Ошибка ответа (статус не 200): ', error);                      // Поэтому здесь нужно задавть тип в соответствии со структурой ошибок, кот-е идут от API (изучаем API)
+                return thunkAPI.rejectWithValue({ message: error.message } as FetchLoginError);     // Передаем эти ошибку сразу в reducer для дальнейшей работы с ними
+            }                                                                                       // Ошибка здесь и из блока catch передаются только в loginUser.rejected
 
             const data: IAuthResponse = await response.json();
             console.log('Данные с сервера: ', data);
             return data;
-        } catch (error) {                                    // Какого типа вернется ошибка error - мы не знаем, мы лишь строкой ниже присваиваем тип ошибке, кот-ю отдаем в reducer
-            console.log('Ошибки асинхроннго кода: ', error);   // Поэтому здесь нужно задавть тип в соответствии со структурой ошибок, кот-е идут от API (изучаем API)
+        } catch (error) {
+            console.log('Ошибки асинхроннго кода: ', error);
             return thunkAPI.rejectWithValue({ message: error } as FetchLoginError);
         }
     }
@@ -61,6 +62,7 @@ export const authSlice = createSlice({
             })
             .addCase(loginUser.fulfilled, (state, action: PayloadAction<IAuthResponse>) => {
                 state.status = 'successfully';
+                state.error = '';
                 state.tokenAccess = action.payload.accessToken;
                 state.tokenExpire = action.payload.expire;
             })
