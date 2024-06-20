@@ -1,10 +1,8 @@
-import { INavigationItems } from './types/dataTypes';
-import { ITextLine } from './types/dataTypes';
-import { IButtonName } from './types/dataTypes';
-import { IButtonNetworkName } from './types/dataTypes';
-import { ITitleContent } from './types/dataTypes';
-import { IImagePaths } from './types/dataTypes';
-import { IFormFields } from './types/dataTypes';
+import {
+    INavigationItems, ITextLine, IButtonName,
+    IButtonNetworkName, ITitleContent, IImagePaths,
+    IFormFields,
+} from './types/dataTypes';
 
 // Данные навигации
 export const navigationItems: INavigationItems[] = [
@@ -94,3 +92,9 @@ export const logUpFormFields: IFormFields[] = [
 ];
 
 export const placholderUserName = 'Арнольд';
+
+// Поля для информационной панели по компаниям
+export const infoPanelItems: ITextLine[] = [
+    { name: 'usedCompanyCount', text: 'Использовано компаний' },
+    { name: 'companyLimit', text: 'Лимит по компаниям' }
+];

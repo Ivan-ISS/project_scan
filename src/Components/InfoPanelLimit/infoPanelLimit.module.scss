@@ -1,0 +1,42 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.infoPanelLimit {
+    display: flex;
+    flex-direction: column;
+    background: rgba(#d9d9d9, 0.3);
+    border-radius: 5px;
+    padding: 15px 10px;
+    min-width: 175px;
+
+    .infoPanelItem {
+        display: flex;
+        column-gap: 9px;
+        align-self: end;
+        flex-wrap: wrap;
+        
+        .parameter {
+            font-size: 10px;
+            opacity: 0.4;
+            align-self: center;
+            white-space: nowrap;
+        }
+
+        .value {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .companyLimit {
+            color: #8ac540;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .infoPanelLimit {
+
+        min-width: 140px;
+    }
+}

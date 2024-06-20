@@ -39,7 +39,7 @@ export const fetchUserInfo = createAsyncThunk<IUserInfoResponse, FetchUserInfoAr
 );
 
 export interface IState {
-    eventFiltersInfo: IUserInfoResponse;
+    userInfo: IUserInfoResponse;
     status: 'not started' | 'in progress' | 'successfully' | 'download failed';
     error: string;
 }
@@ -47,7 +47,12 @@ export interface IState {
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
-        eventFiltersInfo: {},
+        userInfo: {
+            eventFiltersInfo: {
+                usedCompanyCount: 0,
+                companyLimit: 0,
+            },
+        },
         status: 'not started',
         error: '',
     } as IState,
@@ -61,8 +66,8 @@ export const userSlice = createSlice({
             }).
             addCase(fetchUserInfo.fulfilled, (state, action: PayloadAction<IUserInfoResponse>) => {
                 state.status = 'successfully';
-                state.eventFiltersInfo = action.payload;
-                console.log('state.eventFiltersInfo: ', state.eventFiltersInfo);
+                state.userInfo = action.payload;
+                console.log('state.eventFiltersInfo: ', state.userInfo);
             }).
             addCase(fetchUserInfo.rejected, (state, action: PayloadAction<FetchUserInfoError | undefined>) => {
                 state.status = 'download failed';

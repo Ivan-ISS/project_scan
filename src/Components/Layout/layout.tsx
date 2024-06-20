@@ -11,6 +11,7 @@ import Navigation from '../Common/Navigation/navigation';
 import AccountControlPanel from '../AccountControlPanel/accountControlPanel';
 import BurgerButton from '../Common/Buttons/BurgerButton/burgerButton';
 import TextLines from '../Common/TextLines/textLines';
+import InfoPanelLimit from '../InfoPanelLimit/infoPanelLimit';
 import Modal from '../Common/Modal/modal';
 import ModalContentMenu from '../Common/Modal/ModalContentMenu/modalContentMenu';
 import routes from '../../routes';
@@ -27,6 +28,7 @@ export default function Layout() {
                     <Logo src={'images/svg/logo.svg'} />
                 </Link>
                 <Navigation navigationItems={navigationItems}/>
+                { tokenAccess && <InfoPanelLimit/> }
                 <AccountControlPanel tokenAccess={tokenAccess}/>
                 <BurgerButton show={isOpenPortal} onClick={openPortal}/>
             </Header>
