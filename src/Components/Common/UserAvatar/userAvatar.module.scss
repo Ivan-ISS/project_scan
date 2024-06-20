@@ -1,0 +1,40 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.userAvatar {
+    display: flex;
+    gap: 4px;
+
+    .userPanel {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        align-items: end;
+    }
+
+    .imageContainer {
+        border-radius: 50%;
+        border: solid 1px rgba($base-black, 0.4);
+    }
+}
+
+.desktopImage {
+    width: 32px;
+    height: 32px;
+}
+
+.mobileImage {
+    width: 44px;
+    height: 44px;
+}
+
+.desktopName {
+    font-size: 14px;
+    color: $base-black;
+}
+
+.mobileName {
+    font-size: 16px;
+    color: $base-white;
+}

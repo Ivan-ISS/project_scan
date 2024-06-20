@@ -1,6 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-// import { useAppSelector } from '../../redux/store';
-// import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import Home from '../Pages/home';
 import Rates from '../Pages/rates';
 import Faq from '../Pages/faq';

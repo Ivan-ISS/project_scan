@@ -1,13 +1,13 @@
 import styles from './primaryButton.module.scss';
 import { ButtonHTMLAttributes } from 'react';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+export interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     text: string;
     fontSize: 'big' | 'small';
     isDisabled?: boolean;
 }
 
-export default function PrimaryButton({ text, fontSize, ...props }: ButtonProps) {
+export default function PrimaryButton({ text, fontSize, ...props }: PrimaryButtonProps) {
 
     const handleClickBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (props.onClick) {

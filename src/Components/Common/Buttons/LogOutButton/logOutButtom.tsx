@@ -1,12 +1,12 @@
-import styles from './signUpButton.module.scss';
+import styles from './logOutButton.module.scss';
 import { ButtonHTMLAttributes } from 'react';
 
-export interface SignUpButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+export interface LogOutButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     text: string;
     size: 'desktop' | 'mobile';
 }
 
-export default function SignUpButton({ text, size, ...props }: SignUpButtonProps) {
+export default function LogOutButton({ text, size, ...props }: LogOutButtonProps) {
 
     const handleClickBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (props.onClick) {
@@ -18,7 +18,7 @@ export default function SignUpButton({ text, size, ...props }: SignUpButtonProps
         <button
             {...props}
             onClick={handleClickBtn}
-            className={`${styles.signUpButton} ${styles[size]}`}
+            className={`${styles.logOutButton} ${styles[size]}`}
         >
             {text}
         </button>

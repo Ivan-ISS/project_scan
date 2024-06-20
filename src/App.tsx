@@ -13,7 +13,7 @@ export default function App() {
     const prevToken = useRef(tokenAccess);
 
     useEffect(() => {  // Перенаправдение на страницу профиля после авторизации
-        if (tokenAccess !== prevToken.current && tokenAccess !== '') {
+        if (tokenAccess !== prevToken.current && tokenAccess) {
             navigate(routes.home());
         }
         prevToken.current = tokenAccess;

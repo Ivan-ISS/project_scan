@@ -28,6 +28,7 @@ export const legalInformationItems: ITextLine[] = [
 export const buttonName: IButtonName = {
     signUpButton: 'Зарегистрироваться',
     logUpButton: 'Войти',
+    LogOutButton: 'Выйти',
     restorePassword: 'Восстановить пароль',
 };
 
@@ -59,6 +60,12 @@ export const titleContent: ITitleContent = {
 
 // Пути до иллюстраций
 export const imagePaths: IImagePaths = {
+    header: [
+        {
+            src: 'images/svg/placeholderAvatar.svg',
+            alt: 'avatar placeholder',
+        },
+    ],
     homePage: [
 
     ],
@@ -85,3 +92,5 @@ export const logUpFormFields: IFormFields[] = [
     { name: 'Логин или номер телефона', type: 'text', varName: 'login' },
     { name: 'Пароль', type: 'password', varName: 'password' },
 ];
+
+export const placholderUserName = 'Арнольд';

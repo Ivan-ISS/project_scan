@@ -1,11 +1,11 @@
 import styles from './burgerButton.module.scss';
 import { HTMLAttributes } from 'react';
 
-export interface CloseButtonProps extends HTMLAttributes<HTMLButtonElement>{
+export interface BurgerButtonProps extends HTMLAttributes<HTMLButtonElement>{
     show: boolean;
 }
 
-export default function BurgerButton({ show, ...props }: CloseButtonProps) {
+export default function BurgerButton({ show, ...props }: BurgerButtonProps) {
 
     return (
         <div className={styles.burgerWrap}>

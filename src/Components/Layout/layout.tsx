@@ -1,6 +1,8 @@
 import styles from './layout.module.scss';
 import { navigationItems, contactItems, legalInformationItems } from '../../data';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../redux/store';
+import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import Header from '../Header/header';
 import Content from '../Content/content';
 import Footer from '../Footer/footer';
@@ -16,6 +18,7 @@ import usePortal from '../../hooks/usePortal';
 
 export default function Layout() {
     const { isOpenPortal, openPortal, closePortal, Portal } = usePortal();
+    const tokenAccess = useAppSelector(selectTokenAccess);
 
     return (
         <div className={styles.layout}>
@@ -24,7 +27,7 @@ export default function Layout() {
                     <Logo src={'images/svg/logo.svg'} />
                 </Link>
                 <Navigation navigationItems={navigationItems}/>
-                <AccountControlPanel/>
+                <AccountControlPanel tokenAccess={tokenAccess}/>
                 <BurgerButton show={isOpenPortal} onClick={openPortal}/>
             </Header>
             <main className={styles.main}>
@@ -41,7 +44,7 @@ export default function Layout() {
                     <TextLines style={{fontSize: '12px'}} textLines={legalInformationItems}/>
                 </div>
             </Footer>
-            { isOpenPortal && <Portal><Modal closeModal={closePortal} insert={<ModalContentMenu closeModal={closePortal}/>}/></Portal> }
+            { isOpenPortal && <Portal><Modal closeModal={closePortal} insert={<ModalContentMenu tokenAccess={tokenAccess} closeModal={closePortal}/>}/></Portal> }
         </div>
     );
 }

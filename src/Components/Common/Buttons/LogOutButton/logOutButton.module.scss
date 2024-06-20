@@ -1,0 +1,26 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.logOutButton {
+    cursor: pointer;
+    background: transparent;
+    font-family: inherit;
+    font-weight: 400;
+    opacity: 0.4;
+    transition: $transition-hover;
+
+    &:hover {
+        opacity: $button-opacity-hover;
+    }
+}
+
+.desktop {
+    font-size: 10px;
+    color: $base-black;
+}
+
+.mobile {
+    font-size: 16px;
+    color: $base-white;
+}

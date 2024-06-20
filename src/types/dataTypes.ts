@@ -11,6 +11,7 @@ export interface ITextLine {
 export interface IButtonName {
     signUpButton: 'Зарегистрироваться';
     logUpButton: 'Войти';
+    LogOutButton: 'Выйти';
     restorePassword: 'Восстановить пароль';
 }
 
@@ -32,6 +33,7 @@ export interface IImagePath {
 }
 
 export interface IImagePaths {
+    header: IImagePath[];
     homePage: IImagePath[];
     authorizationPage: IImagePath[];
     searchPage: IImagePath[];

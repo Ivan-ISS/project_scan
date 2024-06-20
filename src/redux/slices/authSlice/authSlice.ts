@@ -53,7 +53,11 @@ export const authSlice = createSlice({
         error: '',
     } as IState,
     reducers: {
-
+        logOut: (state) => {
+            state.tokenAccess = '';
+            state.tokenExpire = '';
+            state.status = 'not started';
+        }
     },
     extraReducers: (builder) => {
         builder.
@@ -74,3 +78,5 @@ export const authSlice = createSlice({
             });
     }
 });
+
+export const { logOut } = authSlice.actions;

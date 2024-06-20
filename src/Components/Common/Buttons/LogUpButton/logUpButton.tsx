@@ -1,12 +1,12 @@
 import styles from './logUpButton.module.scss';
 import { ButtonHTMLAttributes } from 'react';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+export interface LogUpButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     text: string;
     size: 'desktop' | 'mobile';
 }
 
-export default function LogUpButton({ text, size, ...props }: ButtonProps) {
+export default function LogUpButton({ text, size, ...props }: LogUpButtonProps) {
 
     const handleClickBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (props.onClick) {
