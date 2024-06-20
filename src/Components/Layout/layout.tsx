@@ -34,7 +34,7 @@ export default function Layout() {
             </Header>
             <main className={styles.main}>
                 <div className={styles.container}>
-                    <Content/>
+                    <Content tokenAccess={tokenAccess}/>
                 </div>
             </main>
             <Footer>

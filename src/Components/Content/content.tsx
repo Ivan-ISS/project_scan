@@ -7,7 +7,11 @@ import Search from '../Pages/search';
 import Results from '../Pages/results';
 import routes from '../../routes';
 
-export default function Content() {
+export interface ContentProps {
+    tokenAccess: string;
+}
+
+export default function Content({ tokenAccess }: ContentProps) {
 
     return (
         <Routes>
@@ -16,8 +20,8 @@ export default function Content() {
             <Route path={ routes.faq() } element={<Faq/>}></Route>
 
             <Route path={ routes.authorization() } element={<Authorization/>}></Route>
-            <Route path={ routes.search() } element={<Search/>}></Route>
-            <Route path={ routes.results() } element={<Results/>}></Route>
+            <Route path={ routes.search() } element={ tokenAccess ? <Search/> : <Home/> }></Route>
+            <Route path={ routes.results() } element={ tokenAccess ? <Results/> : <Home/> }></Route>
         </Routes>
     );
 }
