@@ -13,6 +13,7 @@ export interface IButtonName {
     logUpButton: 'Войти';
     LogOutButton: 'Выйти';
     restorePassword: 'Восстановить пароль';
+    requestData: 'Запросить данные';
 }
 
 export interface IButtonNetworkName {
@@ -44,4 +45,9 @@ export interface IFormFields {
     name: string;
     type: string;
     varName: string;
+}
+
+export interface ICardItem {
+    path: string;
+    content: string;
 }

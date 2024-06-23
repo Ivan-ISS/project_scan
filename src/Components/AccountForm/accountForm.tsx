@@ -3,7 +3,6 @@ import { buttonName } from '../../data';
 import { IFormFields } from '../../types/dataTypes';
 import { IAuth } from '../../types/authTypes';
 import { useState, FormEvent } from 'react';
-// import Input from '../Common/Input/input';
 import { InputWithValidation } from '../Common/Input/input';
 import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import { createFieldsString, createFieldsBoolean } from '../../utils/configureFieldNames';

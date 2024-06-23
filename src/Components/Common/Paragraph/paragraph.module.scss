@@ -1,0 +1,17 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.adaptive {
+    font-size: 20px;
+}
+
+.static {
+    font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+
+    .adaptive {
+        font-size: 18px;
+    }
+}

@@ -1,7 +1,7 @@
 import {
     INavigationItems, ITextLine, IButtonName,
     IButtonNetworkName, ITitleContent, IImagePaths,
-    IFormFields,
+    IFormFields, ICardItem,
 } from './types/dataTypes';
 
 // Данные навигации
@@ -28,6 +28,7 @@ export const buttonName: IButtonName = {
     logUpButton: 'Войти',
     LogOutButton: 'Выйти',
     restorePassword: 'Восстановить пароль',
+    requestData: 'Запросить данные',
 };
 
 export const buttonNetworkNames: IButtonNetworkName[] = [
@@ -65,7 +66,14 @@ export const imagePaths: IImagePaths = {
         },
     ],
     homePage: [
-
+        {
+            src: 'images/svg/imgFunction.svg',
+            alt: 'title illustration',
+        },
+        {
+            src: 'images/svg/imgArguments.svg',
+            alt: 'title illustration',
+        },
     ],
     authorizationPage: [
         {
@@ -97,4 +105,21 @@ export const placholderUserName = 'Арнольд';
 export const infoPanelItems: ITextLine[] = [
     { name: 'usedCompanyCount', text: 'Использовано компаний' },
     { name: 'companyLimit', text: 'Лимит по компаниям' }
+];
+
+// Аргументирующие карточки
+export const cardItems: ICardItem[] = [
+    { path: 'images/svg/cardIconThird.svg', content: 'Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству' },
+    { path: 'images/svg/cardIconFirst.svg', content: 'Высокая и оперативная скорость обработки заявки' },
+    { path: 'images/svg/cardIconSecond.svg', content: 'Огромная комплексная база данных, обеспечивающая объективный ответ на запрос' },
+    { path: 'images/svg/cardIconThird.svg', content: 'Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству' },
+    { path: 'images/svg/cardIconFirst.svg', content: 'Высокая и оперативная скорость обработки заявки' },
+    { path: 'images/svg/cardIconSecond.svg', content: 'Огромная комплексная база данных, обеспечивающая объективный ответ на запрос' },
+    /* { path: 'Card 4', content: 'Some content for card 4.' },
+    { path: 'Card 5', content: 'Some content for card 5.' },
+    { path: 'Card 6', content: 'Some content for card 6.' },
+    { path: 'Card 7', content: 'Some content for card 7.' },
+    { path: 'Card 8', content: 'Some content for card 8.' },
+    { path: 'Card 9', content: 'Some content for card 9.' },
+    { path: 'Card 10', content: 'Some content for card 10.' }, */
 ];

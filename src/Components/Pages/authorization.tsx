@@ -8,7 +8,7 @@ export default function Authorization() {
     return (
         <section className={styles.authPanel}>
             <div className={styles.staticBlock}>
-                <PageTitle titleContent={titleContent.authorizationPage[0]} size={'sizeDesktopRest'}/>
+                <PageTitle titleContent={titleContent.authorizationPage[0]} size={'sizeRest'}/>
                 <div className={`${styles.imageContainer} ${styles.desktopImageContainer}`}>
                     <Picture
                         src={imagePaths.authorizationPage[0].src}

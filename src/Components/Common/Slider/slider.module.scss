@@ -1,0 +1,36 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapCardsBlock {
+        display: flex;
+        max-width: 95%;
+        overflow: hidden;
+
+        .cardsBlock {
+            display: flex;
+            padding: 25px;
+            transition: transform 0.5s ease;
+        }
+    }
+}
+
+/* .card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+}
+ */
+
+
+@media (max-width: 1024px) {
+
+    .slider {
+        
+
+    }
+}

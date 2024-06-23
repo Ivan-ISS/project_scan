@@ -1,12 +1,12 @@
-import styles from './pageTitle.module.scss';
+import styles from './sectionTitle.module.scss';
 import { HTMLAttributes } from 'react';
 
-export interface PageTitleProps extends HTMLAttributes<HTMLHeadElement> {
+export interface SectionTitleProps extends HTMLAttributes<HTMLHeadElement> {
     titleContent: string;
     size: 'sizeHome' | 'sizeRest'
 }
 
-export default function PageTitle({ titleContent, size, ...props }: PageTitleProps) {
+export default function SectionTitle({ titleContent, size, ...props }: SectionTitleProps) {
 
     return (
         <h1 {...props} className={`${styles.pageTitle} ${styles[size]}`}>
