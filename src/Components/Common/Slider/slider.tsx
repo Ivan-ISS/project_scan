@@ -1,5 +1,5 @@
 import styles from './slider.module.scss';
-import { cardItems } from '../../../data';
+import { cardArgumentItems } from '../../../data';
 import { useEffect, useRef, useState } from 'react';
 import ArrowButton from '../Buttons/ArrowButton/arrowButton';
 import CardArgument from '../CardArgument/cardArgument';
@@ -17,7 +17,7 @@ export default function Slider({ percentageWidth, percentageGap, insert }: Slide
     const [ cardGap, setCardGap ] = useState<number>(0);
     const slideContainerRef = useRef<HTMLDivElement>(null);
     const sliderRef = useRef<HTMLDivElement>(null);
-    const [ nextSlide, prevSlide ] = useSlider({ cardItems: cardItems, slideContainer: slideContainerRef, slideWidth: cardWidth + cardGap });
+    const [ nextSlide, prevSlide ] = useSlider({ cardItems: cardArgumentItems, slideContainer: slideContainerRef, slideWidth: cardWidth + cardGap });
 
     useEffect(() => {
         setTimeout(nextSlide, 500);
@@ -47,7 +47,7 @@ export default function Slider({ percentageWidth, percentageGap, insert }: Slide
             <ArrowButton direction={'left'} onClick={() => prevSlide()}/>
             <div ref={sliderRef} className={styles.wrapCardsBlock}>
                 <div ref={slideContainerRef} style={{ gap: `${cardGap}px` }} className={styles.cardsBlock}>
-                    {cardItems.map((item, index) => (
+                    {cardArgumentItems.map((item, index) => (
                         <>
                             { insert === 'cardArgument' && <CardArgument key={index} style={{ minWidth: `${cardWidth}px` }} item={item}/> }
                         </>

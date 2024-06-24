@@ -1,11 +1,12 @@
 import styles from '../../styles/pageStyles/home.module.scss';
-import { titleContent, imagePaths, buttonName } from '../../data';
+import { titleContent, imagePaths, buttonName, cardTariffItems } from '../../data';
 import PageTitle from '../Common/Titles/PageTitle/pageTitle';
 import SectionTitle from '../Common/Titles/SectionTitle/sectionTitle';
 import Paragraph from '../Common/Paragraph/paragraph';
 import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import Picture from '../Common/Picture/picture';
 import Slider from '../Common/Slider/slider';
+import CardTariff from '../Common/CardTariff/cardTariff';
 
 export default function Home() {
     return (
@@ -38,6 +39,15 @@ export default function Home() {
                         src={imagePaths.homePage[1].src}
                         alt={imagePaths.homePage[1].alt}
                     />
+                </div>
+            </section>
+            
+            <section className={styles.tariffs}>
+                <SectionTitle titleContent={titleContent.homePage[2]} size={'sizeHome'}/>
+                <div className={styles.cardBlock}>
+                    {cardTariffItems.map((item, index) => (
+                        <CardTariff key={index} item={item}/>
+                    ))}
                 </div>
             </section>
         </>

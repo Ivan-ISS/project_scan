@@ -55,8 +55,8 @@ export const userSlice = createSlice({
                 companyLimit: 0,
             },
         },
-        userName: 'Арнольд',
-        userTariff: 'Beginner',
+        userName: '',
+        userTariff: '',
         status: 'not started',
         error: '',
     } as IState,
@@ -71,6 +71,8 @@ export const userSlice = createSlice({
             addCase(fetchUserInfo.fulfilled, (state, action: PayloadAction<IUserInfoResponse>) => {
                 state.status = 'successfully';
                 state.userInfo = action.payload;
+                state.userName = 'Арнольд';
+                state.userTariff = 'Beginner';
                 console.log('state.eventFiltersInfo: ', state.userInfo);
             }).
             addCase(fetchUserInfo.rejected, (state, action: PayloadAction<FetchUserInfoError | undefined>) => {

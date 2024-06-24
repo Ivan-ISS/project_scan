@@ -1,11 +1,11 @@
 import styles from './cardArgument.module.scss';
-import { ICardItem } from '../../../types/dataTypes';
+import { ICardArgumentItem } from '../../../types/dataTypes';
 import { HTMLAttributes } from 'react';
 import Picture from '../Picture/picture';
 import Paragraph from '../Paragraph/paragraph';
 
 export interface CardArgumentProps extends HTMLAttributes<HTMLDivElement> {
-    item: ICardItem;
+    item: ICardArgumentItem;
 }
 
 export default function CardArgument({ item, ...props }: CardArgumentProps) {

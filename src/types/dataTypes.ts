@@ -47,7 +47,28 @@ export interface IFormFields {
     varName: string;
 }
 
-export interface ICardItem {
+export interface ICardArgumentItem {
     path: string;
     content: string;
+}
+
+export interface ICardTariffItem {
+    tariffName : string;
+    description: string;
+    imagePath: IImagePath;
+    badge: string;
+    price: {
+        currentAmount: number;
+        oldAmount: number;
+        currencySymbol: string;
+        installment: string;
+    };
+    characteristics: {
+        initial: string;
+        list: string[];
+    };
+    buttonName: {
+        active: string;
+        notActive: string;
+    };
 }

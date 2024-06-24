@@ -1,7 +1,7 @@
 import {
     INavigationItems, ITextLine, IButtonName,
     IButtonNetworkName, ITitleContent, IImagePaths,
-    IFormFields, ICardItem,
+    IFormFields, ICardArgumentItem, ICardTariffItem,
 } from './types/dataTypes';
 
 // Данные навигации
@@ -106,7 +106,7 @@ export const infoPanelItems: ITextLine[] = [
 ];
 
 // Аргументирующие карточки
-export const cardItems: ICardItem[] = [
+export const cardArgumentItems: ICardArgumentItem[] = [
     { path: 'images/svg/cardIconThird.svg', content: 'Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству' },
     { path: 'images/svg/cardIconFirst.svg', content: 'Высокая и оперативная скорость обработки заявки' },
     { path: 'images/svg/cardIconSecond.svg', content: 'Огромная комплексная база данных, обеспечивающая объективный ответ на запрос' },
@@ -120,4 +120,77 @@ export const cardItems: ICardItem[] = [
     { path: 'Card 8', content: 'Some content for card 8.' },
     { path: 'Card 9', content: 'Some content for card 9.' },
     { path: 'Card 10', content: 'Some content for card 10.' }, */
+];
+
+// Карточки тарифов
+export const cardTariffItems: ICardTariffItem[] = [
+    { 
+        tariffName: 'Beginner',
+        description: 'Для небольшого исследования',
+        imagePath: {
+            src: 'images/svg/beginnerTariff.svg',
+            alt: 'tariff icon'
+        },
+        badge: 'Текущий тариф',
+        price: {
+            currentAmount: 799,
+            oldAmount: 1200,
+            currencySymbol: '\u20bd',
+            installment: 'или 150 \u20bd/мес. при рассрочке на 24 мес.'
+        },
+        characteristics: {
+            initial: 'В тариф входит:',
+            list: [ 'Безлимитная история запросов', 'Безопасная сделка', 'Поддержка 24/7' ]
+        },
+        buttonName: {
+            active: 'Перейти в личный кабинет',
+            notActive: 'Подробнее'
+        }
+    },
+    { 
+        tariffName: 'Pro',
+        description: 'Для HR и фрилансеров',
+        imagePath: {
+            src: 'images/svg/proTariff.svg',
+            alt: 'tariff icon'
+        },
+        badge: 'Текущий тариф',
+        price: {
+            currentAmount: 1299,
+            oldAmount: 2600,
+            currencySymbol: '\u20bd',
+            installment: 'или 279 \u20bd/мес. при рассрочке на 24 мес.'
+        },
+        characteristics: {
+            initial: 'В тариф входит:',
+            list: [ 'Все пункты тарифа Beginner', 'Экспорт истори', 'Рекомендации по приоритетам' ]
+        },
+        buttonName: {
+            active: 'Перейти в личный кабинет',
+            notActive: 'Подробнее'
+        }
+    },
+    { 
+        tariffName: 'Business',
+        description: 'Для корпоративных клиентов',
+        imagePath: {
+            src: 'images/svg/businessTariff.svg',
+            alt: 'tariff icon'
+        },
+        badge: 'Текущий тариф',
+        price: {
+            currentAmount: 2379,
+            oldAmount: 3700,
+            currencySymbol: '\u20bd',
+            installment: ''
+        },
+        characteristics: {
+            initial: 'В тариф входит:',
+            list: [ 'Все пункты тарифа Pro', 'Безлимитное количество запросов', 'Приоритетная поддержка' ]
+        },
+        buttonName: {
+            active: 'Перейти в личный кабинет',
+            notActive: 'Подробнее'
+        }
+    },
 ];

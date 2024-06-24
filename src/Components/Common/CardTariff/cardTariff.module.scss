@@ -1,0 +1,195 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.cardArgument {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: $box-shadow-container;
+    overflow: hidden;
+    width: 100%;
+
+    .headingArea {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 10px;
+        padding: 30px 30px 35px;
+        position: relative;
+        min-height: 153px;
+
+        .tariffName {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 18px;
+        }
+
+        .imageContainer {
+            position: absolute;
+            width: 92px;
+            height: 83px;
+            top: 15px;
+            right: 7px;
+        }
+    }
+
+    .beginner {
+        background: $base-orange;
+    }
+
+    .pro {
+        background: $base-light-green
+    }
+
+    .business {
+        background: $base-black;
+        color: $base-white;
+    }
+
+    .body {
+        position: relative;
+        padding: 30px 30px 25px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 55px;
+        height: 100%;
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 10px;
+            font-size: 14px;
+            color: $base-white;
+            padding: 3px 13px;
+            background: #3ba5e0;
+            border-radius: 10px;
+        }
+
+        .price {
+            flex-grow: 1;
+
+            .currentAmount,
+            .oldAmount {
+                font-weight: 500;
+            }
+
+            .currentAmount {
+                font-size: 30px;
+                margin-right: 19px;
+            }
+
+            .oldAmount {
+                opacity: 0.5;
+                font-size: 25px;
+                text-decoration: line-through;
+            }
+
+            .installment {
+                margin-top: 10px;
+                font-size: 18px;
+            }
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .initial {
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            .characteristics {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                margin-left: 28px;
+                font-size: 18px;
+
+                .characteristic {
+                    position: relative;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 3px;
+                        left: -25px;
+                        width: 13px;
+                        height: 8.5px;
+                        border-left: 3px solid rgb(0, 220, 0);
+                        border-bottom: 3px solid rgb(0, 220, 0);
+                        rotate: -45deg;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.beginner {
+    border: 2px solid $base-orange;
+}
+
+.pro {
+    border: 2px solid $base-light-green;
+}
+
+.business {
+    border: 2px solid $base-black;
+}
+
+@media (max-width: 1400px) {
+
+    .cardArgument {
+        
+        .headingArea {
+
+            .imageContainer {
+                width: 75px;
+                height: 50px;
+                top: 10px;
+                right: 7px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1150px) {
+
+    .cardArgument {
+        
+        .headingArea {
+            padding: 30px 22px 35px;
+        }
+
+        .body {
+            padding: 20px 22px 25px;
+
+            .badge {
+                top: 7px;
+                right: 7px;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 670px) {
+
+    .cardArgument {
+
+        .body {
+
+            .list {
+    
+                .characteristics {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
