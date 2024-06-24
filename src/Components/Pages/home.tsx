@@ -1,5 +1,8 @@
 import styles from '../../styles/pageStyles/home.module.scss';
 import { titleContent, imagePaths, buttonName, cardTariffItems } from '../../data';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../redux/store';
+import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import PageTitle from '../Common/Titles/PageTitle/pageTitle';
 import SectionTitle from '../Common/Titles/SectionTitle/sectionTitle';
 import Paragraph from '../Common/Paragraph/paragraph';
@@ -7,8 +10,16 @@ import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import Picture from '../Common/Picture/picture';
 import Slider from '../Common/Slider/slider';
 import CardTariff from '../Common/CardTariff/cardTariff';
+import routes from '../../routes';
 
 export default function Home() {
+    const navigate = useNavigate();
+    const tokenAccess = useAppSelector(selectTokenAccess);
+
+    const handleClickRequest = () => {
+        navigate(routes.search());
+    };
+
     return (
         <>
             <section className={styles.companyFunction}>
@@ -19,7 +30,10 @@ export default function Home() {
                             Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.
                         </Paragraph>
                     </div>
-                    <PrimaryButton style={{ maxWidth: '355px' }} text={buttonName.requestData} fontSize={'big'}/>
+                    {
+                        tokenAccess &&
+                        <PrimaryButton style={{ maxWidth: '355px' }} text={buttonName.requestData} fontSize={'big'} onClick={handleClickRequest}/>
+                    }
                 </div>
                 <div className={styles.imageContainer}>
                     <Picture

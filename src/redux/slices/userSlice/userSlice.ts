@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IUserInfoResponse } from '../../../types/userInfoTypes';
+import { logOut } from '../authSlice/authSlice';
 import routes from '../../../routes';
 
 export interface FetchUserInfoArgs {
@@ -80,6 +81,12 @@ export const userSlice = createSlice({
                 if (action.payload) {
                     state.error = action.payload.message;
                 }
+            }).
+            addCase(logOut, (state) => {    // Слушатель выхода из профиля
+                state.userName = '';
+                state.userTariff = '';
+                state.userInfo.eventFiltersInfo.companyLimit = 0;
+                state.userInfo.eventFiltersInfo.usedCompanyCount = 0;
             });
     }
 });
