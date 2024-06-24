@@ -40,6 +40,8 @@ export const fetchUserInfo = createAsyncThunk<IUserInfoResponse, FetchUserInfoAr
 
 export interface IState {
     userInfo: IUserInfoResponse;
+    userName: string;
+    userTariff: string;
     status: 'not started' | 'in progress' | 'successfully' | 'download failed';
     error: string;
 }
@@ -53,6 +55,8 @@ export const userSlice = createSlice({
                 companyLimit: 0,
             },
         },
+        userName: 'Арнольд',
+        userTariff: 'Beginner',
         status: 'not started',
         error: '',
     } as IState,

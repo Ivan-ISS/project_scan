@@ -1,6 +1,7 @@
 import styles from './userAvatar.module.scss';
-import { buttonName, imagePaths, placholderUserName } from '../../../data';
-import { useAppDispatch } from '../../../redux/store';
+import { buttonName, imagePaths } from '../../../data';
+import { useAppSelector, useAppDispatch } from '../../../redux/store';
+import { selectUserName } from '../../../redux/slices/userSlice/userSelector';
 import { logOut } from '../../../redux/slices/authSlice/authSlice';
 import LogOutButton from '../Buttons/LogOutButton/logOutButtom';
 import Picture from '../Picture/picture';
@@ -12,6 +13,7 @@ export interface UserAvatarProps {
 
 export default function UserAvatar({ size, onClick, ...props }: UserAvatarProps) {
     const dispatch = useAppDispatch();
+    const userName = useAppSelector(selectUserName);
 
     const handleClickLogOut = () => {
         onClick && onClick();
@@ -22,7 +24,7 @@ export default function UserAvatar({ size, onClick, ...props }: UserAvatarProps)
         <div {...props} className={styles.userAvatar}>
             <div className={styles.userPanel}>
                 <div className={`${styles.userName} ${styles[size + 'Name']}`}>
-                    {placholderUserName}
+                    {userName}
                 </div>
                 <LogOutButton size={size} text={buttonName.LogOutButton} onClick={handleClickLogOut}/>
             </div>

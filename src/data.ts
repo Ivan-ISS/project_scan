@@ -99,8 +99,6 @@ export const logUpFormFields: IFormFields[] = [
     { name: 'Пароль', type: 'password', varName: 'password' },
 ];
 
-export const placholderUserName = 'Арнольд';
-
 // Поля для информационной панели по компаниям
 export const infoPanelItems: ITextLine[] = [
     { name: 'usedCompanyCount', text: 'Использовано компаний' },
