@@ -3,7 +3,7 @@ import { InputProps } from '../Input/input';
 
 export interface WithValidationProps extends InputProps {
     value: string;
-    onChange: (value: string) => void;
+    onHandleChange: (value: string) => void;
     onValidationChange: (isValid: boolean) => void;
 }
 
@@ -14,7 +14,12 @@ export default function withValidation<P extends WithValidationProps>(
     const UpdatedComponent = (props: P) => {
         const [ isValid, setIsValid ] = useState(false);
 
-        const onInputChange = (value: string) => {
+        const onInputChangeBlur = (value: string) => {
+
+            if (typeof value !== 'string') {
+                value = '';
+            }
+
             const valueIsValid = value.trim() === '';
             setIsValid(valueIsValid);
 
@@ -27,10 +32,10 @@ export default function withValidation<P extends WithValidationProps>(
             } */
 
             props.onValidationChange(valueIsValid);
-            props.onChange(value);
+            props.onHandleChange(value);
         };
 
-        return <WrappedComponent {...props} hasError={isValid} onChange={onInputChange}/>;
+        return <WrappedComponent {...props} hasError={isValid} onHandleChange={onInputChangeBlur} onBlur={onInputChangeBlur}/>;
     };
 
     return UpdatedComponent;

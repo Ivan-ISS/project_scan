@@ -2,6 +2,7 @@ import {
     INavigationItems, ITextLine, IButtonName,
     IButtonNetworkName, ITitleContent, IImagePaths,
     IFormFields, ICardArgumentItem, ICardTariffItem,
+    ISelectField,
 } from './types/dataTypes';
 
 // Данные навигации
@@ -29,6 +30,7 @@ export const buttonName: IButtonName = {
     LogOutButton: 'Выйти',
     restorePassword: 'Восстановить пароль',
     requestData: 'Запросить данные',
+    search: 'Поиск',
 };
 
 export const buttonNetworkNames: IButtonNetworkName[] = [
@@ -77,16 +79,27 @@ export const imagePaths: IImagePaths = {
     ],
     authorizationPage: [
         {
-            src: 'images/svg/auth.svg',
-            alt: 'image key',
+            src: 'images/svg/imgAuth.svg',
+            alt: 'key',
         },
         {
             src: 'images/svg/lock.svg',
-            alt: 'image lock',
+            alt: 'lock',
         },
     ],
     searchPage: [
-
+        {
+            src: 'images/svg/imgSearch.svg',
+            alt: 'search',
+        },
+        {
+            src: 'images/svg/file.svg',
+            alt: 'file',
+        },
+        {
+            src: 'images/svg/folders.svg',
+            alt: 'folder',
+        },
     ],
     resultsPage: [
 
@@ -194,3 +207,14 @@ export const cardTariffItems: ICardTariffItem[] = [
         }
     },
 ];
+
+// Поля формы поиска
+export const searchFormFields: IFormFields[] = [
+    { name: 'ИНН компании *', type: 'text', varName: 'tin', placeholder: '10 цифр' },
+    { name: 'Количество документов в выдаче *', type: 'number', varName: 'quantity', placeholder: 'От 1 до 1000' },
+    { name: '', type: 'date', varName: 'startDate', placeholder: 'Дата начала' },
+    { name: '', type: 'date', varName: 'endDate', placeholder: 'Дата конца' },
+];
+
+export const searchFormSelectField: ISelectField =
+    { name: 'Тональность', varName: 'tone', value: [ 'Любая', 'Позитивная', 'Негативная' ] };

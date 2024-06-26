@@ -1,0 +1,63 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.field {
+    position: relative;
+    font-size: 16px;
+    color: $base-gray;
+    align-self: center;
+    width: 100%;
+    font-family: 'Inter';
+
+    .label {
+        display: block;
+        width: fit-content;
+        margin-bottom: 15px;
+    }
+
+    .select {
+        position: relative;
+        padding: 12px 19px;
+        outline: none;
+        width: 100%;
+        min-width: 150px;
+        min-height: 43px;
+        border: 1px solid rgba($base-black, 0.4);
+        border-radius: 5px;
+        box-shadow: $box-shadow-small-element;
+        transition: $transition-hover;
+        font-size: 14px;
+        font-family: 'Inter';
+        background: transparent;
+        z-index: 2;
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:focus {
+            border-color: rgba($base-black, 0.4);
+            box-shadow: 0 0 0 2px rgba($base-black, 0.4);
+        }
+    }
+
+    .selectWrap {
+        position: relative;
+        max-width: 242px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 21px;
+            width: 13px;
+            height: 13px;
+            border-top: 8px solid $base-white;
+            border-right: 8px solid $base-white;
+            border-left: 8px solid #d9d9d9;
+            border-bottom: 8px solid #d9d9d9;
+            rotate: -45deg;
+            z-index: 1;
+        }
+    }
+}

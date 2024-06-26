@@ -1,0 +1,49 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.searchFrom {
+    width: 100%;
+    max-width: 870px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    padding: 20px 40px 30px;
+    box-shadow: $box-shadow-container;
+    border-radius: 10px;
+
+    .formFields {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+
+        .dateRange {
+            max-width: 372px;
+
+            .label {
+                display: block;
+                width: fit-content;
+                margin-bottom: 15px;
+                color: $base-gray;
+            }
+
+            .range {
+                display: flex;
+                column-gap: 20px;
+            }
+        }
+    }
+
+    .errorPanel {
+        margin-top: -20px;
+        width: 100%;
+        text-align: center;
+        color: $error-red;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+
+}

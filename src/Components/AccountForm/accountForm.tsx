@@ -41,10 +41,12 @@ export default function AccountForm({ fields, hasError, error, handleAuthFormSub
                 {fields.map((field, index) => 
                     <InputWithValidation
                         key={index}
-                        name={field.name}
+                        labelName={field.name}
+                        varName={field.varName}
                         type={field.type}
                         value={formData[field.varName]}
-                        onChange={(value) => handleChange(field.varName, value)}
+                        sameMessage={true}
+                        onHandleChange={(value) => handleChange(field.varName, value)}
                         onValidationChange={(isValid) => handleOnValidationChange(field.varName, isValid)} // Вот как создаются функции, кот-е где то принимают на вход, то что указано впереди - (isValid). Эта функция возьмет это значение в компоненте в который передается, т.е. в инпуте обернутом HOC, ведь мы передаем всю эту стрелочную функцию. Она берет на вход isValid и возвращает ф-ю handleOnValidationChange
                     />
                 )}
