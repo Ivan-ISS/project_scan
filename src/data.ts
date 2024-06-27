@@ -210,7 +210,7 @@ export const cardTariffItems: ICardTariffItem[] = [
 
 // Поля формы поиска
 export const searchFormFields: IFormFields[] = [
-    { name: 'ИНН компании *', type: 'text', varName: 'tin', placeholder: '10 цифр' },
+    { name: 'ИНН компании *', type: 'text', varName: 'inn', placeholder: '10 цифр' },
     { name: 'Количество документов в выдаче *', type: 'number', varName: 'quantity', placeholder: 'От 1 до 1000' },
     { name: '', type: 'date', varName: 'startDate', placeholder: 'Дата начала' },
     { name: '', type: 'date', varName: 'endDate', placeholder: 'Дата конца' },

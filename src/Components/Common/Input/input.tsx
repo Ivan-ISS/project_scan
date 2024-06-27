@@ -8,12 +8,12 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
     type: string;
     value: string;
     hasError?: boolean;
-    sameMessage?: boolean;
+    messageError?: string;
     placeholder?: string;
     onHandleChange: (value: string) => void;
 }
 
-export default function Input({ labelName, varName, type, value, hasError, sameMessage, placeholder, onHandleChange, ...props }: InputProps) {
+export default function Input({ labelName, varName, type, value, hasError, messageError, placeholder, onHandleChange, ...props }: InputProps) {
     //const [value, setValue] = useState('');
 
     const onInputChangeBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,8 +39,7 @@ export default function Input({ labelName, varName, type, value, hasError, sameM
                 onChange={onInputChangeBlur}
                 onBlur={onInputChangeBlur}
             />
-            { hasError && sameMessage && <div className={styles.errorPanel}>{ `Введите ${labelName.toLocaleLowerCase()}` }</div> }
-            { hasError && !sameMessage && <div className={styles.errorPanel}>{ 'Обязательное поле' }</div> }
+            { hasError && <div className={styles.errorPanel}>{messageError}</div> }
         </div>
     );
 }

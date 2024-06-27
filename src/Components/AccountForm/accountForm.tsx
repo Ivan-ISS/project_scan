@@ -29,9 +29,9 @@ export default function AccountForm({ fields, hasError, error, handleAuthFormSub
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(formData);
-        console.log(formValidation);
-        console.log(formIsValid);
+        console.log('formData: ', formData);
+        console.log('formValidation: ', formValidation);
+        console.log('formIsValid: ', formIsValid);
         handleAuthFormSubmit && handleAuthFormSubmit({ login: formData.login, password: formData.password });
     };
 

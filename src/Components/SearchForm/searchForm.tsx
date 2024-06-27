@@ -30,9 +30,9 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
     };
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        console.log(formData);
-        console.log(formValidation);
-        console.log(formIsValid);
+        console.log('formData: ', formData);
+        console.log('formValidation: ', formValidation);
+        console.log('formIsValid: ', formIsValid);
         event.preventDefault();
     };
 
@@ -57,6 +57,7 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
                     name={searchFormSelectField.name}
                     varName={searchFormSelectField.varName}
                     values={searchFormSelectField.value}
+                    onHandleChange={(value) => handleChange(searchFormSelectField.varName, value)}
                 />
                 <div className={styles.dateRange}>
                     <label htmlFor={fields[2].varName} className={styles.label}>Диапазон поиска *</label>
@@ -64,6 +65,7 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
                         {fields.slice(2, 4).map((field, index) => 
                             <InputWithValidation
                                 key={index}
+                                style={{ minWidth: '176px' }}
                                 labelName={field.name}
                                 varName={field.varName}
                                 type={field.type}
