@@ -55,6 +55,11 @@ export interface ISelectField {
     value: string[];
 }
 
+export interface ICheckboxField {
+    name: string;
+    varName: string;
+}
+
 export interface ICardArgumentItem {
     path: string;
     content: string;

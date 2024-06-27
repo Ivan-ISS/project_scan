@@ -36,3 +36,33 @@
         }
     }
 }
+
+@media (max-width: 895px) {
+
+    .searchPanel {
+        justify-content: center;
+
+        .wrapHeading {
+    
+            .imgFile {
+                top: 100px;
+                right: 0;
+                max-width: 58px;
+            }
+    
+            .imgFolders {
+                display: none;
+            }
+        }
+        
+        .functionalityBlock {
+            flex-direction: column;
+            row-gap: 25px;
+
+            .imageContainer {
+                max-width: none;
+                align-self: center;
+            }
+        }
+    }
+}

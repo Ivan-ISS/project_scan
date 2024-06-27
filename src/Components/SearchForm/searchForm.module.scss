@@ -6,10 +6,9 @@
     max-width: 870px;
 
     display: flex;
-    flex-direction: column;
-    row-gap: 30px;
+    column-gap: 11px;
 
-    padding: 20px 40px 30px;
+    padding: 30px 40px;
     box-shadow: $box-shadow-container;
     border-radius: 10px;
 
@@ -17,6 +16,10 @@
         display: flex;
         flex-direction: column;
         row-gap: 30px;
+        margin-bottom: 40px;
+        margin-right: 92px;
+        max-width: 280px;
+        width: 100%;
 
         .dateRange {
             max-width: 372px;
@@ -30,20 +33,97 @@
 
             .range {
                 display: flex;
-                column-gap: 20px;
+                gap: 20px;
             }
         }
     }
 
-    .errorPanel {
-        margin-top: -20px;
+    .formCheckboxes {
         width: 100%;
-        text-align: center;
-        color: $error-red;
-        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+
+        .chekboxPanel {
+            flex-grow: 1;
+            font-size: 18px;
+        }
+
+        .buttonPanel {
+            margin-top: 3px;
+            max-width: 305px;
+            align-self: flex-end;
+            width: 100%;
+
+            .errorPanel {
+                margin-top: -20px;
+                width: 100%;
+                text-align: center;
+                color: $error-red;
+                font-size: 14px;
+            }
+    
+            .mark {
+                margin-top: 10px;
+                font-size: 14px;
+                color: $base-gray;
+            }
+        }
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1330px) {
 
+    .searchFrom {
+        column-gap: 50px;
+        padding: 30px 25px;
+        
+        .formCheckboxes {
+
+            .chekboxPanel {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1250px) {
+
+    .searchFrom {
+        column-gap: 50px;
+        padding: 30px 25px;
+        
+        .formFields {
+            min-width: 200px;
+            margin-right: 0;
+            max-width: 350px;
+    
+            .dateRange {
+                max-width: none;
+
+                .range {
+                    flex-direction: column;
+                    gap: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 590px) {
+
+    .searchFrom {
+        flex-direction: column;
+        align-items: center;
+        
+        .formCheckboxes {
+
+            .chekboxPanel {
+                display: none;
+            }
+
+            .buttonPanel {
+                align-self: center;
+            }
+        }
+    }
 }

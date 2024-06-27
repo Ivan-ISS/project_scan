@@ -1,0 +1,57 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.label {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    cursor: pointer;
+    transition: $transition-hover;
+
+    .checkbox {
+        display: none;
+    }
+
+    .checkboxFake {
+        position: relative;
+        border: 1px solid $base-black;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 3.5px;
+            left: 3px;
+            width: 11px;
+            height: 6.5px;
+            border-left: 2px solid rgb(0, 220, 0);
+            border-bottom: 2px solid rgb(0, 220, 0);
+            rotate: -45deg;
+            line-height: 15px;
+            opacity: 0;
+            transition: $transition-hover;
+        }
+    }
+
+    .checkbox:checked + .checkboxFake::before {
+        opacity: 1;
+    }
+}
+
+.active {
+    opacity: 1;
+}
+
+.notActive {
+    opacity: 0.4;
+
+    &:hover {
+        opacity: 1;
+    }
+}

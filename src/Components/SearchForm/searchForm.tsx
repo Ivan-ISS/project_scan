@@ -1,11 +1,12 @@
 import styles from './searchForm.module.scss';
-import { buttonName, searchFormSelectField } from '../../data';
+import { buttonName, searchFormSelectField, searchFormCheckboxField } from '../../data';
 import { IFormFields } from '../../types/dataTypes';
 import { useState, FormEvent } from 'react';
 import { InputWithValidation } from '../Common/Input/input';
 import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import Select from '../Common/Select/select';
 import { createFieldsString, createFieldsBoolean } from '../../utils/configureFieldNames';
+import CheckboxGroup from '../Common/CheckboxGroup/checkboxGroup';
 
 export interface AccountFormProps {
     fields: IFormFields[];
@@ -16,7 +17,8 @@ export interface AccountFormProps {
 export default function AccountForm({ fields, hasError, error }: AccountFormProps) {
     const [ formData, setFormData ] = useState({
         ...createFieldsString(fields),
-        ...createFieldsString([searchFormSelectField])
+        ...createFieldsString([searchFormSelectField]),
+        ...createFieldsString(searchFormCheckboxField),
     });
     const [ formValidation, setformValidation ] = useState(createFieldsBoolean(fields));
     const formIsValid = Object.values(formValidation).some(value => value);
@@ -42,7 +44,6 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
                 {fields.slice(0, 2).map((field, index) => 
                     <InputWithValidation
                         key={index}
-                        style={{ maxWidth: '242px' }}
                         labelName={field.name}
                         varName={field.varName}
                         type={field.type}
@@ -53,7 +54,6 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
                     />
                 )}
                 <Select
-                    style={{ maxWidth: '242px' }}
                     name={searchFormSelectField.name}
                     varName={searchFormSelectField.varName}
                     values={searchFormSelectField.value}
@@ -79,8 +79,16 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
                     </div>
                 </div>
             </div>
-            <PrimaryButton text={buttonName.search} fontSize={'big'} type="submit" disabled={formIsValid}/>
-            { hasError ? <div className={styles.errorPanel}>{error}</div> : null }
+            <div className={styles.formCheckboxes}>
+                <div className={styles.chekboxPanel}>
+                    <CheckboxGroup options={searchFormCheckboxField} onHandleChange={(fieldName, value) => handleChange(fieldName, value)}/>
+                </div>
+                <div className={styles.buttonPanel}>
+                    <PrimaryButton text={buttonName.search} fontSize={'big'} type="submit" disabled={formIsValid}/>
+                    { hasError ? <div className={styles.errorPanel}>{error}</div> : null }
+                    <div className={styles.mark}>* Обязательные к заполнению поля</div>
+                </div>
+            </div>
         </form>
     );
 }

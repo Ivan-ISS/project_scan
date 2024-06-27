@@ -2,7 +2,7 @@ import {
     INavigationItems, ITextLine, IButtonName,
     IButtonNetworkName, ITitleContent, IImagePaths,
     IFormFields, ICardArgumentItem, ICardTariffItem,
-    ISelectField,
+    ISelectField, ICheckboxField,
 } from './types/dataTypes';
 
 // Данные навигации
@@ -218,3 +218,13 @@ export const searchFormFields: IFormFields[] = [
 
 export const searchFormSelectField: ISelectField =
     { name: 'Тональность', varName: 'tone', value: [ 'Любая', 'Позитивная', 'Негативная' ] };
+
+export const searchFormCheckboxField: ICheckboxField[] = [
+    { name: 'Признак максимальной полноты', varName: 'maxFullness' },
+    { name: 'Упоминания в бизнес-контексте', varName: 'inBusinessNews' },
+    { name: 'Главная роль в публикации', varName: 'mainRole' },
+    { name: 'Публикации только с риск-факторами', varName: 'riskFactors' },
+    { name: 'Включать технические новости рынков', varName: 'techNews' },
+    { name: 'Включать анонсы и календари', varName: 'annoucements' },
+    { name: 'Включать сводки новостей', varName: 'digests' },
+];
