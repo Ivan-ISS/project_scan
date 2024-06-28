@@ -23,7 +23,14 @@ export default function Input({ labelName, varName, type, value, hasError, messa
 
     return (
         <div className={styles.field}>
-            { labelName && <label htmlFor={varName} className={styles.label}>{labelName}</label> }
+            {
+                labelName && <label
+                    htmlFor={varName}
+                    className={`${styles.label} ${varName === 'password' && styles.labelGray || varName === 'login' && styles.labelGray }`}
+                >
+                    {labelName}
+                </label>
+            }
             <input
                 {...props}
                 id={varName}

@@ -4,7 +4,6 @@
 .field {
     position: relative;
     font-size: 16px;
-    color: $base-gray;
     align-self: center;
     width: 100%;
 
@@ -12,6 +11,11 @@
         display: block;
         width: fit-content;
         margin-bottom: 15px;
+        color: $base-black;
+    }
+
+    .labelGray {
+        color: $base-gray;
     }
 
     .input {
