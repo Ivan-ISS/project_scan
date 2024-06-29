@@ -1,7 +1,11 @@
 import styles from './searchForm.module.scss';
 import { buttonName, searchFormSelectField, searchFormCheckboxField } from '../../data';
 import { IFormFields } from '../../types/dataTypes';
+import { ISearchData } from '../../types/publicationTypes';
 import { useState, FormEvent } from 'react';
+import { useAppSelector, useAppDispatch } from '../../redux/store';
+import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
+import { fetchPublicationSummary } from '../../redux/slices/publicationSummarySlice/publicationSummarySlice';
 import { InputWithValidation } from '../Common/Input/input';
 import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import Select from '../Common/Select/select';
@@ -15,6 +19,8 @@ export interface AccountFormProps {
 }
 
 export default function AccountForm({ fields, hasError, error }: AccountFormProps) {
+    const dispatch = useAppDispatch();
+    const tokenAccess = useAppSelector(selectTokenAccess);
     const [ formData, setFormData ] = useState({
         ...createFieldsString(fields),
         ...createFieldsString([searchFormSelectField]),
@@ -36,6 +42,7 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
         console.log('formValidation: ', formValidation);
         console.log('formIsValid: ', formIsValid);
         event.preventDefault();
+        dispatch(fetchPublicationSummary({ tokenAccess: tokenAccess, requestData: formData as unknown as ISearchData }));
     };
 
     return (
