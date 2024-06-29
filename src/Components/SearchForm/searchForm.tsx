@@ -3,6 +3,7 @@ import { buttonName, searchFormSelectField, searchFormCheckboxField } from '../.
 import { IFormFields } from '../../types/dataTypes';
 import { ISearchData } from '../../types/publicationTypes';
 import { useState, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import { fetchPublicationSummary } from '../../redux/slices/publicationSummarySlice/publicationSummarySlice';
@@ -11,6 +12,7 @@ import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import Select from '../Common/Select/select';
 import { createFieldsString, createFieldsBoolean } from '../../utils/configureFieldNames';
 import CheckboxGroup from '../Common/CheckboxGroup/checkboxGroup';
+import routes from '../../routes';
 
 export interface AccountFormProps {
     fields: IFormFields[];
@@ -21,6 +23,7 @@ export interface AccountFormProps {
 export default function AccountForm({ fields, hasError, error }: AccountFormProps) {
     const dispatch = useAppDispatch();
     const tokenAccess = useAppSelector(selectTokenAccess);
+    const navigate = useNavigate();
     const [ formData, setFormData ] = useState({
         ...createFieldsString(fields),
         ...createFieldsString([searchFormSelectField]),
@@ -43,6 +46,7 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
         console.log('formIsValid: ', formIsValid);
         event.preventDefault();
         dispatch(fetchPublicationSummary({ tokenAccess: tokenAccess, requestData: formData as unknown as ISearchData }));
+        navigate(routes.results());
     };
 
     return (

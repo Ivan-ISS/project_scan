@@ -102,7 +102,10 @@ export const imagePaths: IImagePaths = {
         },
     ],
     resultsPage: [
-
+        {
+            src: 'images/svg/imgResults.svg',
+            alt: 'results',
+        },
     ],
 };
 
