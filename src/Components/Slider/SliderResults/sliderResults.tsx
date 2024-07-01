@@ -1,12 +1,12 @@
-import styles from './sliderSummary.module.scss';
-import { useEffect, useRef, useState } from 'react';
-import Slider from 'react-slick';
+import styles from './sliderResults.module.scss';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
-import { useAppSelector } from '../../redux/store';
-import { selectPublicationSummary, selectSummaryStatus } from '../../redux/slices/publicationSummarySlice/publicationSummarySelector';
-import CardSummary from '../Common/CardSummary/cardSummary';
-import ArrowButton from '../Common/Buttons/ArrowButton/arrowButton';
+import { useEffect, useRef, useState } from 'react';
+import Slider from 'react-slick';
+import { useAppSelector } from '../../../redux/store';
+import { selectPublicationSummary, selectSummaryStatus } from '../../../redux/slices/publicationSummarySlice/publicationSummarySelector';
+import CardSummary from '../../Common/CardSummary/cardSummary';
+import ArrowButton from '../../Common/Buttons/ArrowButton/arrowButton';
 
 export default function SLiderSummary() {
     const [ slidesToShow, setSlidesToShow ] = useState(1);
@@ -37,6 +37,9 @@ export default function SLiderSummary() {
                 const maxSlides = Math.floor(containerWidth / minCardWidth);
 
                 setSlidesToShow(maxSlides);
+                if (window.innerWidth < 600) {
+                    setSlidesToShow(1);
+                }
             }
         };
 

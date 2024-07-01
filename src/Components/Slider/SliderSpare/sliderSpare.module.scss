@@ -28,6 +28,25 @@
             max-width: 1260px;
             width: 100%;
             padding: 17px 17px 17px 10px;
+
+            .wrap {
+                display: flex;
+            }
+        }
+    }
+}
+
+@media (max-width: 1180px) {
+    .slider {
+    
+        .sliderBody {
+    
+            .slidesArea {
+                
+                .wrap {
+                    width: 200%;
+                }
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ import SectionTitle from '../Common/Titles/SectionTitle/sectionTitle';
 import Paragraph from '../Common/Paragraph/paragraph';
 import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import Picture from '../Common/Picture/picture';
-import Slider from '../Common/Slider/slider';
+import SliderHome from '../Slider/SliderHome/sliderHome';
 import CardTariff from '../Common/CardTariff/cardTariff';
 import routes from '../../routes';
 
@@ -46,7 +46,7 @@ export default function Home() {
             <section className={styles.arguments}>
                 <SectionTitle titleContent={titleContent.homePage[1]} size={'sizeHome'}/>
                 <div className={styles.slider}>
-                    <Slider percentageWidth={0.29} percentageGap={0.0425} insert={'cardArgument'}/>
+                    <SliderHome percentageWidth={0.29} percentageGap={0.0425}/>
                 </div>
                 <div className={styles.imageContainer}>
                     <Picture

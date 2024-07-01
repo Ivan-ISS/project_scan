@@ -4,6 +4,7 @@
 .intro {
     display: flex;
     justify-content: space-between;
+    gap: 25px;
     
     .infoBlock {
         display: flex;
@@ -23,5 +24,21 @@
         font-size: 18px;
         color: $base-gray;
         margin: 17px 0 27px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .intro {
+        flex-direction: column;
+        margin-bottom: 60px;
+
+        .infoBlock {
+    
+        }
+
+        .imageContainer {
+            align-self: center;
+        }
     }
 }
