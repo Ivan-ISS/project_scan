@@ -1,6 +1,7 @@
-import { ISearchData, IPublicationSummaryResponse } from '../../../types/publicationTypes';
+import { ISearchData, IPublicationSummaryResponse, IPublicationSummary } from '../../../types/publicationTypes';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { prepareDataToRequest } from '../../../utils/prepareDataToRequest';
+import { prepareDataSummary } from '../../../utils/prepareDataSummary';
 import routes from '../../../routes';
 
 export interface fetchPublicationSummaryArgs {
@@ -46,7 +47,7 @@ export const fetchPublicationSummary = createAsyncThunk<
 );
 
 export interface IState {
-    dataSummary: IPublicationSummaryResponse;
+    publicationSummary: IPublicationSummary[];
     status: 'not started' | 'in progress' | 'successfully' | 'download failed';
     error: string;
 }
@@ -54,10 +55,10 @@ export interface IState {
 export const publicationSummarySlice = createSlice({
     name: 'publicationSummary',
     initialState: {
-        dataSummary: {},
+        publicationSummary: [],
         status: 'not started',
         error: '',
-    },
+    } as IState,
     reducers: {
 
     },
@@ -68,7 +69,8 @@ export const publicationSummarySlice = createSlice({
             }).
             addCase(fetchPublicationSummary.fulfilled, (state, action: PayloadAction<IPublicationSummaryResponse>) => {
                 state.status = 'successfully';
-                state.dataSummary = action.payload;
+                state.publicationSummary = prepareDataSummary(action.payload);
+                console.log('state.publicationSummary: ', state.publicationSummary);
             }).
             addCase(fetchPublicationSummary.rejected, (state, action: PayloadAction<fetchPublicationSummaryError | undefined>) => {
                 state.status = 'download failed';

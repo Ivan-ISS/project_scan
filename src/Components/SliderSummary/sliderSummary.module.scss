@@ -1,0 +1,51 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.wrapSlider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .slider {
+        display: flex;
+        border: 2px solid $base-green;
+        border-radius: 10px;
+        max-width: 1260px;
+        width: 96%;
+
+        .sliderHeading {
+            width: 11%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 26px;
+            background: $base-green;
+            color: $base-white;
+            padding: 17px 2%;
+        }
+
+        .sliderBody {
+            width: 89%;
+            padding: 17px 17px 17px 10px;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .wrapSlider {
+    
+        .slider {
+    
+            .sliderHeading {
+                width: 15%;
+            }
+    
+            .sliderBody {
+                width: 85%;
+            }
+        }
+    }
+}

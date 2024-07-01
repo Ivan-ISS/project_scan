@@ -1,0 +1,17 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.cardSummary {
+    min-width: 140px;
+    width: 100%;
+
+    padding: 0 17px;
+    font-size: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+
+    border-right: 2px solid rgba($base-gray, 0.4);
+}

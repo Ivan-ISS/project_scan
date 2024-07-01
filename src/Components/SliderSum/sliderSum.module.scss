@@ -1,0 +1,33 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .sliderBody {
+        display: flex;
+        border: 2px solid $base-green;
+        border-radius: 10px;
+        width: 95%;
+
+        .sliderHeading {
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            background: $base-green;
+            color: $base-white;
+            padding: 17px;
+            min-width: 135px;
+        }
+
+        .slidesArea {
+            display: flex;
+            overflow: hidden;
+            max-width: 1260px;
+            width: 100%;
+            padding: 17px 17px 17px 10px;
+        }
+    }
+}

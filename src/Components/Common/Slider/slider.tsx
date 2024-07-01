@@ -34,8 +34,6 @@ export default function Slider({ percentageWidth, percentageGap, insert }: Slide
     
         window.addEventListener('resize', updateWidth);
         updateWidth();
-
-        // console.log('width: ', sliderWidth);
     
         return () => {
           window.removeEventListener('resize', updateWidth);
@@ -47,11 +45,11 @@ export default function Slider({ percentageWidth, percentageGap, insert }: Slide
             <ArrowButton direction={'left'} onClick={() => prevSlide()}/>
             <div ref={sliderRef} className={styles.wrapCardsBlock}>
                 <div ref={slideContainerRef} style={{ gap: `${cardGap}px` }} className={styles.cardsBlock}>
-                    {cardArgumentItems.map((item, index) => (
-                        <>
-                            { insert === 'cardArgument' && <CardArgument key={index} style={{ minWidth: `${cardWidth}px` }} item={item}/> }
-                        </>
-                    ))}
+                    <>
+                        {insert === 'cardArgument' && cardArgumentItems.map((item, index) => (
+                            <CardArgument key={index} style={{ minWidth: `${cardWidth}px` }} item={item}/>
+                        ))}
+                    </>
                 </div>
             </div>
             <ArrowButton direction={'right'} onClick={() => nextSlide()}/>

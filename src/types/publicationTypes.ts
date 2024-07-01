@@ -77,8 +77,17 @@ export interface ISearchRequest {
 // Данные ответа сервера
 export interface IPublicationSummaryResponse {
     data: {
-        date: string;
-        value: number;
-    };
-    histogramType: 'totalDocuments' | 'riskFactors';
+        data: {
+            date: string;
+            value: number;
+        }[];
+        histogramType: 'totalDocuments' | 'riskFactors';
+    }[]
+}
+
+// Данные ответа для фронтенда
+export interface IPublicationSummary {
+    date: string;
+    valueTotal: number;
+    valueRisk: number;
 }
