@@ -7,16 +7,16 @@ import ArrowButton from '../../Common/Buttons/ArrowButton/arrowButton';
 import CardSummary from '../../Common/CardSummary/cardSummary';
 
 export default function SliderSum() {
-    const publicationSummary = useAppSelector(selectPublicationSummary);
+    const summaryData = useAppSelector(selectPublicationSummary);
     const [ slides, setSlides ] = useState<ISummary[]>([]);
 
     useEffect(() => {
         const arrSlides: ISummary[] = [];
-        for (let i = 0; i < publicationSummary.length; i++) {
-            arrSlides.push(publicationSummary[i]);
+        for (let i = 0; i < summaryData.length; i++) {
+            arrSlides.push(summaryData[i]);
         }
         setSlides(arrSlides);
-    }, [publicationSummary]);
+    }, [summaryData]);
 
     const nextSlide = () => {
         if(slides.length > 0) {

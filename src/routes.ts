@@ -11,6 +11,7 @@ interface IRoutes {
     urlLogin: () => string;
     urlUserInfo: () => string;
     urlSummary: () => string;
+    urlDocuments: () => string;
 }
 
 const routes: IRoutes = {
@@ -23,6 +24,7 @@ const routes: IRoutes = {
     urlLogin: () => `${API_HOST}/account/login`,
     urlUserInfo: () => `${API_HOST}/account/info`,
     urlSummary: () => `${API_HOST}/objectsearch/histograms`,
+    urlDocuments: () => `${API_HOST}/objectsearch`,
 };
 
 export default routes;

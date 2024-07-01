@@ -2,14 +2,14 @@ import { IAuthResponse, IAuth } from '../../../types/authTypes';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import routes from '../../../routes';
 
-export interface fetchAuthArgs extends IAuth {}
+export interface FetchAuthArgs extends IAuth {}
 
 export interface FetchLoginError {
     errorCode: string;
     message: string;
 }
 
-export const loginUser = createAsyncThunk<IAuthResponse, fetchAuthArgs, { rejectValue: FetchLoginError | undefined }>(
+export const loginUser = createAsyncThunk<IAuthResponse, FetchAuthArgs, { rejectValue: FetchLoginError | undefined }>(
     'loginUser/fetch',
     async (authData, thunkAPI) => {
         try {

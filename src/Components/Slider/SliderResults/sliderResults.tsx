@@ -10,7 +10,7 @@ import ArrowButton from '../../Common/Buttons/ArrowButton/arrowButton';
 
 export default function SLiderSummary() {
     const [ slidesToShow, setSlidesToShow ] = useState(1);
-    const publicationSummary = useAppSelector(selectPublicationSummary);
+    const summaryData = useAppSelector(selectPublicationSummary);
     const summaryStatus = useAppSelector(selectSummaryStatus);
     const sliderBodyRef = useRef<HTMLDivElement>(null);
     const sliderRef = useRef<Slider>(null);
@@ -26,7 +26,7 @@ export default function SLiderSummary() {
     useEffect(() => {
         let minCardWidth: number;
         if (sliderBodyRef.current)  {
-            minCardWidth = sliderBodyRef.current?.offsetWidth / publicationSummary.length;
+            minCardWidth = sliderBodyRef.current?.offsetWidth / summaryData.length;
             if (minCardWidth < 140) {
                 minCardWidth = 140;
             }
@@ -49,7 +49,7 @@ export default function SLiderSummary() {
         return () => {
           window.removeEventListener('resize', updateSlidesToShow);
         };
-    }, [publicationSummary]);
+    }, [summaryData]);
 
     return (
         <div className={styles.wrapSlider}>
@@ -62,7 +62,7 @@ export default function SLiderSummary() {
                 </div>
                 <div ref={sliderBodyRef} className={styles.sliderBody}>
                     <Slider {...settings} ref={sliderRef}>
-                        {publicationSummary.map((item, index) => (
+                        {summaryData.map((item, index) => (
                             <div key={index}>
                                 {
                                     summaryStatus === 'in progress' ? <div>Loading...</div> :

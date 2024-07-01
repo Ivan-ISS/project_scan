@@ -9,6 +9,7 @@ import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
 import { authSlice } from './slices/authSlice/authSlice';
 import { userSlice } from './slices/userSlice/userSlice';
 import { summarySlice } from './slices/summarySlice/summarySlice';
+import { documentsSlice } from './slices/documentsSlice/documentsSlice';
 
 const persistConfig = {
     key: 'root',
@@ -22,6 +23,7 @@ const store = configureStore({
         auth: persistedReducer,
         user: userSlice.reducer,
         summary: summarySlice.reducer,
+        documents: documentsSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {

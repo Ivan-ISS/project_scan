@@ -85,9 +85,24 @@ export interface ISummaryResponse {
     }[]
 }
 
+export interface IDocumentsResponse {
+    items: {
+        encodedId: string;
+        influence: number;
+        similarCount: number;
+    }[];
+    mappings: unknown[];
+}
+
 // Данные ответа для фронтенда
 export interface ISummary {
     date: string;
     valueTotal: number;
     valueRisk: number;
+}
+
+export interface IDocuments {
+    encodedId: string;
+    influence: number;
+    similarCount: number;
 }

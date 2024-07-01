@@ -1,61 +1,56 @@
-import { ISearchData, ISummaryResponse, ISummary } from '../../../types/scanTypes';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { ISearchData, IDocumentsResponse } from '../../../types/scanTypes';
 import { prepareDataToRequest } from '../../../utils/prepareDataToRequest';
-import { prepareDataSummary } from '../../../utils/prepareDataSummary';
 import routes from '../../../routes';
 
-export interface FetchSummaryArgs {
+export interface FetchDocumentsArgs {
     tokenAccess: string;
     requestData: ISearchData;
 }
 
-export interface FetchSummaryError {
+export interface FetchDocumentsError {
     message: string;
 }
 
-export const fetchSummary = createAsyncThunk<
-        ISummaryResponse,
-        FetchSummaryArgs,
-        {rejectValue: FetchSummaryError | undefined}
-    >(
-    'summary/fetch',
+export const fetchDocuments = createAsyncThunk<IDocumentsResponse, FetchDocumentsArgs, {rejectValue: FetchDocumentsError | undefined}>(
+    'documents/fetch',
     async ({ tokenAccess, requestData }, thunkAPI) => {
         try {
-            const response = await fetch(routes.urlSummary(), {
+            const response = await fetch(routes.urlDocuments(), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${tokenAccess}`
+                    'Authorization': `Bearer ${tokenAccess}`,
                 },
-                body: JSON.stringify(prepareDataToRequest(requestData)),
+                body: JSON.stringify(prepareDataToRequest(requestData))
             });
 
             if (!response.ok) {
                 const error = await response.json();
                 console.log('Ошибка ответа (статус не 200): ', error);
-                return thunkAPI.rejectWithValue({ message: error } as FetchSummaryError);
+                return thunkAPI.rejectWithValue({ message: error } as FetchDocumentsError);
             }
-    
-            const data = await response.json();
+
+            const data = response.json();
             console.log('Данные с сервера: ', data);
             return data;
         } catch (error) {
             console.log('Ошибки асинхроннго кода: ', error);
-            return thunkAPI.rejectWithValue({ message: error } as FetchSummaryError);
+            return thunkAPI.rejectWithValue({ message: error } as FetchDocumentsError);
         }
     }
 );
 
 export interface IState {
-    summaryData: ISummary[];
+    documentsData: IDocumentsResponse;
     status: 'not started' | 'in progress' | 'successfully' | 'download failed';
     error: string;
 }
 
-export const summarySlice = createSlice({
-    name: 'summary',
+export const documentsSlice = createSlice({
+    name: 'documents',
     initialState: {
-        summaryData: [],
+        documentsData: {},
         status: 'not started',
         error: '',
     } as IState,
@@ -64,15 +59,15 @@ export const summarySlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.
-            addCase(fetchSummary.pending, (state) => {
+            addCase(fetchDocuments.pending, (state) => {
                 state.status = 'in progress';
             }).
-            addCase(fetchSummary.fulfilled, (state, action: PayloadAction<ISummaryResponse>) => {
+            addCase(fetchDocuments.fulfilled, (state, action: PayloadAction<IDocumentsResponse>) => {
                 state.status = 'successfully';
-                state.summaryData = prepareDataSummary(action.payload);
-                console.log('state.summary: ', state.summaryData);
+                state.documentsData = action.payload;
+                console.log('state.documentsData: ', state.documentsData);
             }).
-            addCase(fetchSummary.rejected, (state, action: PayloadAction<FetchSummaryError | undefined>) => {
+            addCase(fetchDocuments.rejected, (state, action: PayloadAction<FetchDocumentsError | undefined>) => {
                 state.status = 'download failed';
                 if (action.payload) {
                     state.error = action.payload.message;
