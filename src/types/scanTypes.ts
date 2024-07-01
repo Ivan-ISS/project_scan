@@ -75,7 +75,7 @@ export interface ISearchRequest {
 }
 
 // Данные ответа сервера
-export interface IPublicationSummaryResponse {
+export interface ISummaryResponse {
     data: {
         data: {
             date: string;
@@ -86,7 +86,7 @@ export interface IPublicationSummaryResponse {
 }
 
 // Данные ответа для фронтенда
-export interface IPublicationSummary {
+export interface ISummary {
     date: string;
     valueTotal: number;
     valueRisk: number;

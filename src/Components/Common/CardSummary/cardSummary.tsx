@@ -1,9 +1,9 @@
 import styles from './cardSummary.module.scss';
-import { IPublicationSummary } from '../../../types/publicationTypes';
+import { ISummary } from '../../../types/scanTypes';
 import { HTMLAttributes } from 'react';
 
 export interface CardSummaryProps extends HTMLAttributes<HTMLDivElement> {
-    item: IPublicationSummary;
+    item: ISummary;
 }
 
 export default function CardSummary({ item, ...props }: CardSummaryProps) {

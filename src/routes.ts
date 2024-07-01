@@ -10,7 +10,7 @@ interface IRoutes {
     results: () => string;
     urlLogin: () => string;
     urlUserInfo: () => string;
-    urlPublicationSummary: () => string;
+    urlSummary: () => string;
 }
 
 const routes: IRoutes = {
@@ -22,7 +22,7 @@ const routes: IRoutes = {
     results: () => '/results',
     urlLogin: () => `${API_HOST}/account/login`,
     urlUserInfo: () => `${API_HOST}/account/info`,
-    urlPublicationSummary: () => `${API_HOST}/objectsearch/histograms`,
+    urlSummary: () => `${API_HOST}/objectsearch/histograms`,
 };
 
 export default routes;

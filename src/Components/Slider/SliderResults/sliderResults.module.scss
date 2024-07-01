@@ -13,7 +13,7 @@
         border: 2px solid $base-green;
         border-radius: 10px;
         max-width: 1260px;
-        width: 96%;
+        width: 95%;
 
         .sliderHeading {
             width: 11%;
@@ -50,6 +50,25 @@
         }
     }
 }
+
+@media (max-width: 767px) {
+
+    .wrapSlider {
+    
+        .slider {
+            width: 90%;
+    
+            .sliderHeading {
+                width: 20%;
+            }
+    
+            .sliderBody {
+                width: 80%;
+            }
+        }
+    }
+}
+
 
 @media (max-width: 600px) {
 

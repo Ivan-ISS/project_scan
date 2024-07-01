@@ -1,17 +1,17 @@
 import styles from './sliderSpare.module.scss';
-import { IPublicationSummary } from '../../../types/publicationTypes';
+import { ISummary } from '../../../types/scanTypes';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../redux/store';
-import { selectPublicationSummary } from '../../../redux/slices/publicationSummarySlice/publicationSummarySelector';
+import { selectPublicationSummary } from '../../../redux/slices/summarySlice/summarySelector';
 import ArrowButton from '../../Common/Buttons/ArrowButton/arrowButton';
 import CardSummary from '../../Common/CardSummary/cardSummary';
 
 export default function SliderSum() {
     const publicationSummary = useAppSelector(selectPublicationSummary);
-    const [ slides, setSlides ] = useState<IPublicationSummary[]>([]);
+    const [ slides, setSlides ] = useState<ISummary[]>([]);
 
     useEffect(() => {
-        const arrSlides: IPublicationSummary[] = [];
+        const arrSlides: ISummary[] = [];
         for (let i = 0; i < publicationSummary.length; i++) {
             arrSlides.push(publicationSummary[i]);
         }

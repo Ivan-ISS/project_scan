@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { useAppSelector } from '../../../redux/store';
-import { selectPublicationSummary, selectSummaryStatus } from '../../../redux/slices/publicationSummarySlice/publicationSummarySelector';
+import { selectPublicationSummary, selectSummaryStatus } from '../../../redux/slices/summarySlice/summarySelector';
 import CardSummary from '../../Common/CardSummary/cardSummary';
 import ArrowButton from '../../Common/Buttons/ArrowButton/arrowButton';
 
@@ -63,12 +63,12 @@ export default function SLiderSummary() {
                 <div ref={sliderBodyRef} className={styles.sliderBody}>
                     <Slider {...settings} ref={sliderRef}>
                         {publicationSummary.map((item, index) => (
-                            <>
+                            <div key={index}>
                                 {
                                     summaryStatus === 'in progress' ? <div>Loading...</div> :
-                                    <CardSummary key={index} item={item}/>
+                                    <CardSummary item={item}/>
                                 }
-                            </>
+                            </div>
                         ))}
                     </Slider>
                 </div>

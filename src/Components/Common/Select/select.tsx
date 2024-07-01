@@ -24,8 +24,8 @@ export default function Select({ name, varName, values, onHandleChange, ...props
             <label htmlFor={varName} className={styles.label}>{name}</label>
             <div className={styles.selectWrap}>
                 <select {...props} className={styles.select} id={varName} onChange={onSelectChange}>
-                    {values.map((value) =>
-                        <option value={value} className={styles.option}>
+                    {values.map((value, index) =>
+                        <option key={index} value={value} className={styles.option}>
                             {value}
                         </option>
                     )}

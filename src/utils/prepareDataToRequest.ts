@@ -1,4 +1,4 @@
-import { ISearchData, ISearchRequest } from '../types/publicationTypes';
+import { ISearchData, ISearchRequest } from '../types/scanTypes';
 
 export function prepareDataToRequest(dataToPrepare: ISearchData): ISearchRequest {
 

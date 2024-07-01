@@ -1,10 +1,10 @@
-import { IPublicationSummaryResponse, IPublicationSummary } from '../types/publicationTypes';
+import { ISummaryResponse, ISummary } from '../types/scanTypes';
 
-export function prepareDataSummary(dataToPrepare: IPublicationSummaryResponse): IPublicationSummary[] {
+export function prepareDataSummary(dataToPrepare: ISummaryResponse): ISummary[] {
 
     console.log('dataToPrepare: ', dataToPrepare);
 
-    const result: IPublicationSummary[] = [];
+    const result: ISummary[] = [];
 
     dataToPrepare.data[0].data.forEach((item, index) => {
         result.push(
