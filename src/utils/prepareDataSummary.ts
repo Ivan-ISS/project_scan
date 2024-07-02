@@ -23,7 +23,5 @@ export function prepareDataSummary(dataToPrepare: ISummaryResponse): ISummary[] 
         return dateA.getTime() - dateB.getTime();
       });
 
-    console.log('result: ', result);
-
     return result;
 }

@@ -1,0 +1,17 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.publicationList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 38px;
+}
+
+@media (max-width: 767px) {
+
+    .publicationList {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

@@ -16,14 +16,7 @@ export default function  useSlider({ cardItems, slideContainer, slideWidth }: IU
     const [direction, setDirection] = useState<string | null>(null);
     const [isActive, setIsActive] = useState<boolean>(true);
 
-    /* useEffect(() => {
-        const ID = setInterval(nextSlide, 5000);
-
-        return () => clearInterval(ID);
-    }, [isActive]); */
-
     useEffect(() => {
-        // console.log('indexSlide: ', indexSlide, ' cardItems: ', cardItems);
         const container = slideContainer.current;
         if (container && isActive) {
             setIsActive(false);

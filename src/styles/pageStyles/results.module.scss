@@ -19,12 +19,19 @@
 }
 
 .summary {
+    margin-bottom: 110px;
 
     .amoundFound {
         font-size: 18px;
         color: $base-gray;
         margin: 17px 0 27px;
     }
+}
+
+.publications {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
 @media (max-width: 767px) {
@@ -36,5 +43,9 @@
         .imageContainer {
             align-self: center;
         }
+    }
+
+    .summary {
+        margin-bottom: 57px;
     }
 }

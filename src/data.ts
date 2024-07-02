@@ -31,6 +31,7 @@ export const buttonName: IButtonName = {
     restorePassword: 'Восстановить пароль',
     requestData: 'Запросить данные',
     search: 'Поиск',
+    result: 'Читать в источнике',
 };
 
 export const buttonNetworkNames: IButtonNetworkName[] = [
@@ -105,6 +106,10 @@ export const imagePaths: IImagePaths = {
         {
             src: 'images/svg/imgResults.svg',
             alt: 'results',
+        },
+        {
+            src: 'images/jpeg/placeholder.jpg',
+            alt: 'placeholder',
         },
     ],
 };

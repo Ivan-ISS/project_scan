@@ -15,6 +15,7 @@ export interface IButtonName {
     restorePassword: 'Восстановить пароль';
     requestData: 'Запросить данные';
     search: 'Поиск';
+    result: 'Читать в источнике';
 }
 
 export interface IButtonNetworkName {

@@ -1,0 +1,123 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.CardPublication {
+    box-shadow:$box-shadow-container;
+    padding: 20px 30px 35px 30px;
+    border-radius: 10px;
+    background: $base-white;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    width: 100%;
+
+    .info {
+        display: flex;
+        gap: 18px;
+        color: $base-gray;
+        margin-bottom: 24px;
+        flex-grow: 1;
+
+        .date {
+            white-space: nowrap;
+        }
+
+        .source {
+            color: $base-gray;
+            text-decoration: underline;
+            transition: $transition-hover;
+
+            &:hover {
+                text-shadow: $text-shadow-black-hover;
+                color: $base-black;
+            }
+        }
+    }
+
+    .title {
+        font-size: 26px;
+        font-weight: 500;
+        margin-bottom: 14px;
+        flex-grow: 1;
+    }
+
+    .tag {
+        border-radius: 5px;
+        background: $base-blue;
+        padding: 4px 12px;
+        font-size: 12px;
+        width: max-content;
+        margin-bottom: 14px;
+    }
+
+    .tagTech {
+        background: $base-orange;
+    }
+
+    .tagAnnouncement {
+        background: $base-black;
+        color: $base-white
+    }
+
+    .tagDigest {
+        background: $base-green;
+    }
+
+    .imageContainer {
+        max-height: 158px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .text {
+        display: -webkit-box;
+        -webkit-line-clamp: 12;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-height: 252px;
+        word-break: break-word;
+        opacity: 0.5;
+        margin-bottom: 32px;
+    }
+
+    .bottomPanel {
+        display: flex;
+        justify-content: space-between;
+        gap: 19px;
+
+        .wordCount {
+            color: $base-gray;
+            align-self: end;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .CardPublication {
+        font-size: 14px;
+        padding: 20px 25px;
+
+        .info {
+            gap: 9px;
+        }
+
+        .title {
+            font-size: 19px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 10px;
+        }
+
+        .text {
+            font-size: 12px;
+            -webkit-line-clamp: 18;
+            max-height: 270px;
+            min-height: 270px;
+            margin-bottom: 25px;
+        }
+    }
+}

@@ -74,6 +74,10 @@ export interface ISearchRequest {
     ],
 }
 
+export interface IContentRequest {
+    ids: string[];
+}
+
 // Данные ответа сервера
 export interface ISummaryResponse {
     data: {
@@ -94,6 +98,49 @@ export interface IDocumentsResponse {
     mappings: unknown[];
 }
 
+export interface IContentResponse {
+    ok: {
+        schemaVersion: string;
+        id: string;
+        version: number;
+        issueDate: string;
+        url: string;
+        author: {
+            name: string;
+        }
+        source: {
+            id: number,
+            groupId: number,
+            name: string,
+            categoryId: number,
+            levelId: number,
+            distributionMethodId: number
+        },
+        dedupClusterId: string;
+        title: {
+            text: string;
+            markup: string;
+        },
+        content: {
+            markup: string;
+        },
+        entities: unknown;
+        attributes: {
+            isTechNews: boolean;
+            isAnnouncement: boolean;
+            isDigest: boolean;
+            isSpeechRecognition: boolean;
+            influence: number;
+            wordCount: number;
+            coverage: {
+                value: number;
+                state: string;
+            }
+        },
+        language: string;
+    }
+}
+
 // Данные ответа для фронтенда
 export interface ISummary {
     date: string;
@@ -106,3 +153,5 @@ export interface IDocuments {
     influence: number;
     similarCount: number;
 }
+
+export interface IContent extends IContentResponse {}

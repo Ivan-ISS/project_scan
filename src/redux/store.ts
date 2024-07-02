@@ -10,6 +10,7 @@ import { authSlice } from './slices/authSlice/authSlice';
 import { userSlice } from './slices/userSlice/userSlice';
 import { summarySlice } from './slices/summarySlice/summarySlice';
 import { documentsSlice } from './slices/documentsSlice/documentsSlice';
+import { contentSlice } from './slices/contentSlice/contentSlice';
 
 const persistConfig = {
     key: 'root',
@@ -24,6 +25,7 @@ const store = configureStore({
         user: userSlice.reducer,
         summary: summarySlice.reducer,
         documents: documentsSlice.reducer,
+        content: contentSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {

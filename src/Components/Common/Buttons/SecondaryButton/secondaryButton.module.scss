@@ -1,0 +1,27 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.secondaryButton {
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    min-width: 225px;
+    padding: 16px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    background: $base-light-green;
+    transition: $transition-hover;
+
+    &:hover {
+        opacity: $button-opacity-hover;
+    }
+}
+
+@media (max-width: 1024px) {
+    
+    .secondaryButton {
+        font-size: 14px;
+        padding: 12px 30px;
+    }
+}
