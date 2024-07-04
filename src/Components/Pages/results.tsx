@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import { selectPublicationSummary } from '../../redux/slices/summarySlice/summarySelector';
-import { selectDocumentsDate } from '../../redux/slices/documentsSlice/documentsSelector';
-import { selectContentData } from '../../redux/slices/contentSlice/contentSelector';
+import { selectDocumentsDate, selectDocumentsStatus } from '../../redux/slices/documentsSlice/documentsSelector';
+import { selectContentData, selectContentStatus } from '../../redux/slices/contentSlice/contentSelector';
 import { selectLazyNumber, selectLazyStep, selectLazyLimit } from '../../redux/slices/documentsSlice/documentsSelector';
 import { fetchContent } from '../../redux/slices/contentSlice/contentSlice';
 import { increaseLazyNumber } from '../../redux/slices/documentsSlice/documentsSlice';
@@ -15,6 +15,7 @@ import Paragraph from '../Common/Paragraph/paragraph';
 import Picture from '../Common/Picture/picture';
 import SliderResults from '../Slider/SliderResults/sliderResults';
 import PublicationList from '../PublicationList/publicationList';
+import Loader from '../Common/Loader/loader';
 import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import routes from '../../routes';
 
@@ -22,8 +23,10 @@ export default function Results() {
     const dispatch = useAppDispatch();
     const publicationSummary = useAppSelector(selectPublicationSummary);
     const documentsData = useAppSelector(selectDocumentsDate);
+    const documentsStatus = useAppSelector(selectDocumentsStatus);
     const tokenAccess = useAppSelector(selectTokenAccess);
     const contentData = useAppSelector(selectContentData);
+    const contentStatus = useAppSelector(selectContentStatus);
     const lazyNumber = useAppSelector(selectLazyNumber);
     const lazyStep = useAppSelector(selectLazyStep);
     const lazyLimit = useAppSelector(selectLazyLimit);
@@ -38,6 +41,9 @@ export default function Results() {
         dispatch(increaseLazyNumber());
         dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData.slice(lazyNumber - lazyStep, lazyNumber) }));
     };
+
+    console.log('documentsStatus: ', documentsStatus);
+    console.log('contentStatus: ', contentStatus);
 
     return (
         <>
@@ -64,9 +70,15 @@ export default function Results() {
 
             <section className={styles.publications}>
                 <SectionTitle titleContent={titleContent.resultsPage[2]} size={'sizeRest'}/>
+                    <PublicationList publications={contentData}/>
                 {
-                    contentData.length ?
-                    <PublicationList publications={contentData}/> :
+                    ((contentStatus === 'in progress' || documentsStatus === 'in progress') ||
+                    (contentStatus === 'successfully' && contentData.length === 0)) &&
+                    <Loader style={{ alignSelf: 'center' }}/>
+                }
+                {
+                    ((documentsStatus === 'successfully' && contentStatus === 'not started' && contentData.length === 0) ||
+                    (documentsStatus === 'not started' && contentStatus === 'not started' && contentData.length === 0)) &&
                     <div className={styles.alternative}>
                         <p>Нет найденных вариантов.</p>
                         <a href={routes.search()} className={styles.link}>Измените параметры запроса</a>

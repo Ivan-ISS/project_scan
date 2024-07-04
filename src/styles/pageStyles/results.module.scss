@@ -41,9 +41,30 @@
             font-family: 'Ferry Black';
             color: $base-blue;
             padding-bottom: 2px;
+            animation: run 1.25s infinite ease-in-out;
+            display: block;
+            width: max-content;
+            border-bottom: 2px solid transparent;
 
             &:hover {
                 border-bottom: 2px solid $base-blue;
+            }
+
+            @keyframes run {
+                0% {
+                    text-shadow: none;
+                    transform: scale(1);
+                }
+
+                50% {
+                    text-shadow: $text-shadow-blue-anim;
+                    transform: scale(1.01);
+                }
+                
+                100% {
+                    text-shadow: none;
+                    transform: scale(1);
+                }
             }
         }
     }

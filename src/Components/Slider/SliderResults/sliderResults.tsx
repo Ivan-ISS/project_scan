@@ -7,6 +7,7 @@ import { useAppSelector } from '../../../redux/store';
 import { selectPublicationSummary, selectSummaryStatus } from '../../../redux/slices/summarySlice/summarySelector';
 import CardSummary from '../../Common/CardSummary/cardSummary';
 import ArrowButton from '../../Common/Buttons/ArrowButton/arrowButton';
+import Loader from '../../Common/Loader/loader';
 
 export default function SLiderSummary() {
     const [ slidesToShow, setSlidesToShow ] = useState(1);
@@ -61,21 +62,19 @@ export default function SLiderSummary() {
                     <div>Риски</div>
                 </div>
                 <div ref={sliderBodyRef} className={styles.sliderBody}>
-                    {summaryData.length === 1 ? (
-                            summaryStatus === 'in progress' ? <div>Loading...</div> :
-                            <CardSummary item={summaryData[0]}/>
-                    ) : (
+                    {
+                        summaryStatus === 'in progress' ?
+                        <Loader style={{ margin: '3.5% auto' }}/> :
+                        summaryData.length === 1 ?
+                        <CardSummary item={summaryData[0]}/> :
                         <Slider {...settings} ref={sliderRef}>
                             {summaryData.map((item, index) => (
                                 <div key={index}>
-                                    {
-                                        summaryStatus === 'in progress' ? <div>Loading...</div> :
-                                        <CardSummary item={item}/>
-                                    }
+                                    <CardSummary item={item}/>
                                 </div>
                             ))}
                         </Slider>
-                    )}
+                    }
                 </div>
             </div>
             <ArrowButton direction={'right'} onClick={() => sliderRef.current?.slickNext()}/>
