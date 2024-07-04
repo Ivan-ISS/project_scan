@@ -43,6 +43,9 @@ export const fetchDocuments = createAsyncThunk<IDocumentsResponse, FetchDocument
 
 export interface IState {
     documentsData: IDocuments[];
+    lazyNumber: number;
+    lazyStep: number;
+    lazyLimit: number;
     status: 'not started' | 'in progress' | 'successfully' | 'download failed';
     error: string;
 }
@@ -51,11 +54,19 @@ export const documentsSlice = createSlice({
     name: 'documents',
     initialState: {
         documentsData: {},
+        lazyNumber: 10,
+        lazyStep: 10,
+        lazyLimit: 0,
         status: 'not started',
         error: '',
     } as IState,
     reducers: {
-
+        increaseLazyNumber: (state) => {
+            state.lazyNumber = state.lazyNumber + state.lazyStep;
+        },
+        resetLazyNumber: (state) => {
+            state.lazyNumber = 10;
+        }
     },
     extraReducers: (builder) => {
         builder.
@@ -65,6 +76,7 @@ export const documentsSlice = createSlice({
             addCase(fetchDocuments.fulfilled, (state, action: PayloadAction<IDocumentsResponse>) => {
                 state.status = 'successfully';
                 state.documentsData = action.payload.items;
+                state.lazyLimit = state.documentsData.length;
                 console.log('state.documentsData: ', state.documentsData);
             }).
             addCase(fetchDocuments.rejected, (state, action: PayloadAction<FetchDocumentsError | undefined>) => {
@@ -75,3 +87,5 @@ export const documentsSlice = createSlice({
             });
     }
 });
+
+export const { increaseLazyNumber, resetLazyNumber } = documentsSlice.actions;

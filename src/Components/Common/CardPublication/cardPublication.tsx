@@ -1,7 +1,8 @@
 import styles from './cardPublication.module.scss';
 import { IContent } from '../../../types/scanTypes';
 import { imagePaths, buttonName } from '../../../data';
-import { HTMLAttributes } from 'react';
+import { useState, useEffect, HTMLAttributes } from 'react';
+import DOMPurify from 'dompurify';
 import Picture from '../Picture/picture';
 import SecondaryButton from '../Buttons/SecondaryButton/secondaryButton';
 
@@ -11,6 +12,21 @@ export interface CardPublicationProps extends HTMLAttributes<HTMLDivElement> {
 
 export default function CardPublication({ publication, ...props }: CardPublicationProps) {
     const { issueDate, url, source, title, attributes, content } = publication.ok;
+    const [ imageSrc, setImageSrc ] = useState<string | null>(null);
+    const [ sanitizedMarkup, setSanitizedMarkup ] = useState('');
+
+    useEffect(() => {
+        setSanitizedMarkup(content.markup.replace(/&lt;[^>]*&gt;|["']|&/g, ' '));
+    }, [content.markup, sanitizedMarkup]);
+
+
+    useEffect(() => {
+        const regex = /src="([^"]+)"/g;
+        const match = regex.exec(content.markup);
+        if (match) {
+            setImageSrc(match[1]);
+        }
+    }, [content.markup]);
 
     const handleClick = () => {
         window.open(publication.ok.url, '_blank');
@@ -43,11 +59,11 @@ export default function CardPublication({ publication, ...props }: CardPublicati
             <div className={styles.imageContainer}>
                 <Picture
                     style={{ height: '100%', objectFit: 'cover' }}
-                    src={imagePaths.resultsPage[1].src}
-                    alt={imagePaths.resultsPage[1].alt}
+                    src={imageSrc ? imageSrc : imagePaths.resultsPage[1].src}
+                    alt={imageSrc ? 'publication image' : imagePaths.resultsPage[1].alt}
                 />
             </div>
-            <p className={styles.text}>{content.markup}</p>
+            <p className={styles.text} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(sanitizedMarkup) }}></p>
             <div className={styles.bottomPanel}>
                 <SecondaryButton style={{ width: 'max-content' }} text={buttonName.result} onClick={handleClick}/>
                 <div className={styles.wordCount}>Слов: {attributes.wordCount}</div>

@@ -61,16 +61,21 @@ export default function SLiderSummary() {
                     <div>Риски</div>
                 </div>
                 <div ref={sliderBodyRef} className={styles.sliderBody}>
-                    <Slider {...settings} ref={sliderRef}>
-                        {summaryData.map((item, index) => (
-                            <div key={index}>
-                                {
-                                    summaryStatus === 'in progress' ? <div>Loading...</div> :
-                                    <CardSummary item={item}/>
-                                }
-                            </div>
-                        ))}
-                    </Slider>
+                    {summaryData.length === 1 ? (
+                            summaryStatus === 'in progress' ? <div>Loading...</div> :
+                            <CardSummary item={summaryData[0]}/>
+                    ) : (
+                        <Slider {...settings} ref={sliderRef}>
+                            {summaryData.map((item, index) => (
+                                <div key={index}>
+                                    {
+                                        summaryStatus === 'in progress' ? <div>Loading...</div> :
+                                        <CardSummary item={item}/>
+                                    }
+                                </div>
+                            ))}
+                        </Slider>
+                    )}
                 </div>
             </div>
             <ArrowButton direction={'right'} onClick={() => sliderRef.current?.slickNext()}/>

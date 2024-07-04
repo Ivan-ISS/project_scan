@@ -32,6 +32,21 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
+
+    .alternative {
+        font-size: 20px;
+        font-weight: 700;
+
+        .link {
+            font-family: 'Ferry Black';
+            color: $base-blue;
+            padding-bottom: 2px;
+
+            &:hover {
+                border-bottom: 2px solid $base-blue;
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {

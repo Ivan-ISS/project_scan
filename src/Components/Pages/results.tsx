@@ -1,18 +1,22 @@
 import styles from '../../styles/pageStyles/results.module.scss';
-import { titleContent, imagePaths } from '../../data';
+import { titleContent, imagePaths, buttonName } from '../../data';
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import { selectPublicationSummary } from '../../redux/slices/summarySlice/summarySelector';
 import { selectDocumentsDate } from '../../redux/slices/documentsSlice/documentsSelector';
 import { selectContentData } from '../../redux/slices/contentSlice/contentSelector';
+import { selectLazyNumber, selectLazyStep, selectLazyLimit } from '../../redux/slices/documentsSlice/documentsSelector';
 import { fetchContent } from '../../redux/slices/contentSlice/contentSlice';
+import { increaseLazyNumber } from '../../redux/slices/documentsSlice/documentsSlice';
 import PageTitle from '../../Components/Common/Titles/PageTitle/pageTitle';
 import SectionTitle from '../../Components/Common/Titles/SectionTitle/sectionTitle';
 import Paragraph from '../Common/Paragraph/paragraph';
 import Picture from '../Common/Picture/picture';
 import SliderResults from '../Slider/SliderResults/sliderResults';
 import PublicationList from '../PublicationList/publicationList';
+import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
+import routes from '../../routes';
 
 export default function Results() {
     const dispatch = useAppDispatch();
@@ -20,12 +24,20 @@ export default function Results() {
     const documentsData = useAppSelector(selectDocumentsDate);
     const tokenAccess = useAppSelector(selectTokenAccess);
     const contentData = useAppSelector(selectContentData);
+    const lazyNumber = useAppSelector(selectLazyNumber);
+    const lazyStep = useAppSelector(selectLazyStep);
+    const lazyLimit = useAppSelector(selectLazyLimit);
 
     useEffect(() => {
         if (documentsData.length) {
-            dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData }));
+            dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData.slice(lazyNumber - lazyStep, lazyNumber) }));
         }
     }, [dispatch, documentsData, tokenAccess]);
+
+    const hendleLazyLoad = () => {
+        dispatch(increaseLazyNumber());
+        dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData.slice(lazyNumber - lazyStep, lazyNumber) }));
+    };
 
     return (
         <>
@@ -53,8 +65,21 @@ export default function Results() {
             <section className={styles.publications}>
                 <SectionTitle titleContent={titleContent.resultsPage[2]} size={'sizeRest'}/>
                 {
-                    contentData.length && 
-                    <PublicationList publications={contentData}/>
+                    contentData.length ?
+                    <PublicationList publications={contentData}/> :
+                    <div className={styles.alternative}>
+                        <p>Нет найденных вариантов.</p>
+                        <a href={routes.search()} className={styles.link}>Измените параметры запроса</a>
+                    </div>
+                }
+                {
+                    lazyNumber < lazyLimit &&
+                    <PrimaryButton
+                        style={{ alignSelf: 'center', maxWidth: '305px' }}
+                        text={buttonName.lazyLoad}
+                        fontSize={'big'}
+                        onClick={hendleLazyLoad}
+                    />
                 }
             </section>
         </>

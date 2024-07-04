@@ -8,6 +8,8 @@ import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import { fetchSummary } from '../../redux/slices/summarySlice/summarySlice';
 import { fetchDocuments } from '../../redux/slices/documentsSlice/documentsSlice';
+import { resetLazyNumber } from '../../redux/slices/documentsSlice/documentsSlice';
+import { resetContentData } from '../../redux/slices/contentSlice/contentSlice';
 import { InputWithValidation } from '../Common/Input/input';
 import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import Select from '../Common/Select/select';
@@ -46,6 +48,8 @@ export default function AccountForm({ fields, hasError, error }: AccountFormProp
         console.log('formValidation: ', formValidation);
         console.log('formIsValid: ', formIsValid);
         event.preventDefault();
+        dispatch(resetLazyNumber());
+        dispatch(resetContentData());
         dispatch(fetchSummary({ tokenAccess: tokenAccess, requestData: formData as unknown as ISearchData }));
         dispatch(fetchDocuments({ tokenAccess: tokenAccess, requestData: formData as unknown as ISearchData }));
         navigate(routes.results());

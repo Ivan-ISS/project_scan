@@ -16,6 +16,7 @@ export interface IButtonName {
     requestData: 'Запросить данные';
     search: 'Поиск';
     result: 'Читать в источнике';
+    lazyLoad: 'Показать больше';
 }
 
 export interface IButtonNetworkName {

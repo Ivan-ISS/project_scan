@@ -32,6 +32,7 @@ export const buttonName: IButtonName = {
     requestData: 'Запросить данные',
     search: 'Поиск',
     result: 'Читать в источнике',
+    lazyLoad: 'Показать больше',
 };
 
 export const buttonNetworkNames: IButtonNetworkName[] = [

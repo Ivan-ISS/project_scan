@@ -75,7 +75,8 @@
         -webkit-line-clamp: 12;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        max-height: 252px;
+        max-height: 240px;
+        min-height: 240px;
         word-break: break-word;
         opacity: 0.5;
         margin-bottom: 32px;

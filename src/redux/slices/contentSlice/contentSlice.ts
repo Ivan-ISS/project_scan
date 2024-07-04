@@ -55,7 +55,9 @@ export const contentSlice = createSlice({
         error: '',
     } as IState,
     reducers: {
-
+        resetContentData: (state) => {
+            state.contentData = [];
+        }
     },
     extraReducers: (builder) => {
         builder.
@@ -64,7 +66,11 @@ export const contentSlice = createSlice({
             }).
             addCase(fetchContent.fulfilled, (state, action: PayloadAction<IContentResponse[]>) => {
                 state.status = 'successfully';
-                state.contentData = action.payload;
+                console.log('state.contentData before: ', state.contentData);
+                console.log('state.contentData before lenght: ', state.contentData.length);
+                for (let i = 0; i < action.payload.length; i++) {
+                    state.contentData = [ ... state.contentData, action.payload[i]];
+                }
                 console.log('state.contentData: ', state.contentData);
             }).
             addCase(fetchContent.rejected, (state, action: PayloadAction<FetchContentError | undefined>) => {
@@ -75,3 +81,5 @@ export const contentSlice = createSlice({
             });
     }
 });
+
+export const { resetContentData } = contentSlice.actions;
