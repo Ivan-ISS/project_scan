@@ -23,15 +23,15 @@ export const loginUser = createAsyncThunk<IAuthResponse, FetchAuthArgs, { reject
 
             if (!response.ok) {                                                             // Обрабатываем ошибки сервера
                 const error: FetchLoginError = await response.json();                       // Какого типа вернется ошибка error - мы не знаем, мы лишь строкой ниже присваиваем тип ошибке, кот-ю отдаем в reducer
-                console.log('Ошибка ответа (статус не 200): ', error);                      // Поэтому здесь нужно задавть тип в соответствии со структурой ошибок, кот-е идут от API (изучаем API)
+                // console.log('Ошибка ответа (статус не 200): ', error);                      // Поэтому здесь нужно задавть тип в соответствии со структурой ошибок, кот-е идут от API (изучаем API)
                 return thunkAPI.rejectWithValue({ message: error.message } as FetchLoginError);     // Передаем эти ошибку сразу в reducer для дальнейшей работы с ними
             }                                                                                       // Ошибка здесь и из блока catch передаются только в loginUser.rejected
 
             const data: IAuthResponse = await response.json();
-            console.log('Данные с сервера: ', data);
+            // console.log('Данные с сервера: ', data);
             return data;
         } catch (error) {
-            console.log('Ошибки асинхроннго кода: ', error);
+            // console.log('Ошибки асинхроннго кода: ', error);
             return thunkAPI.rejectWithValue({ message: error } as FetchLoginError);
         }
     }

@@ -2,8 +2,6 @@ import { ISearchData, ISearchRequest } from '../types/scanTypes';
 
 export function prepareDataToRequest(dataToPrepare: ISearchData): ISearchRequest {
 
-    console.log('dataToPrepare: ', dataToPrepare);
-
     return {
         issueDateInterval: {
             startDate: `${dataToPrepare.startDate}T00:00:00+03:00`,

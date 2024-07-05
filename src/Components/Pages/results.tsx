@@ -42,9 +42,6 @@ export default function Results() {
         dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData.slice(lazyNumber - lazyStep, lazyNumber) }));
     };
 
-    console.log('documentsStatus: ', documentsStatus);
-    console.log('contentStatus: ', contentStatus);
-
     return (
         <>
             <section className={styles.intro}>

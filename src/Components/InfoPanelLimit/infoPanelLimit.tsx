@@ -10,7 +10,7 @@ export default function InfoPanelLimit() {
 
     return (
         <div className={styles.infoPanelLimit}>
-            { userInfoStatus === 'in progress' ? <Loader/> :
+            { userInfoStatus === 'in progress' ? <Loader style={{ alignSelf: 'center', width: '24px', height: '24px' }}/> :
                 <>
                     {infoPanelItems.map((item, index) => (
                         <div key={index} className={styles.infoPanelItem}>

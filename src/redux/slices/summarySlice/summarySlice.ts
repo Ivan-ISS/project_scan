@@ -32,15 +32,15 @@ export const fetchSummary = createAsyncThunk<
 
             if (!response.ok) {
                 const error = await response.json();
-                console.log('Ошибка ответа (статус не 200): ', error);
+                // console.log('Ошибка ответа (статус не 200): ', error);
                 return thunkAPI.rejectWithValue({ message: error } as FetchSummaryError);
             }
     
             const data = await response.json();
-            console.log('Данные с сервера: ', data);
+            // console.log('Данные с сервера: ', data);
             return data;
         } catch (error) {
-            console.log('Ошибки асинхроннго кода: ', error);
+            // console.log('Ошибки асинхроннго кода: ', error);
             return thunkAPI.rejectWithValue({ message: error } as FetchSummaryError);
         }
     }
@@ -70,7 +70,7 @@ export const summarySlice = createSlice({
             addCase(fetchSummary.fulfilled, (state, action: PayloadAction<ISummaryResponse>) => {
                 state.status = 'successfully';
                 state.summaryData = prepareDataSummary(action.payload);
-                console.log('state.summary: ', state.summaryData);
+                // console.log('state.summary: ', state.summaryData);
             }).
             addCase(fetchSummary.rejected, (state, action: PayloadAction<FetchSummaryError | undefined>) => {
                 state.status = 'download failed';

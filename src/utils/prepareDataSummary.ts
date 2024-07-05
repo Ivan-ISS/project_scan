@@ -2,8 +2,6 @@ import { ISummaryResponse, ISummary } from '../types/scanTypes';
 
 export function prepareDataSummary(dataToPrepare: ISummaryResponse): ISummary[] {
 
-    console.log('dataToPrepare: ', dataToPrepare);
-
     const result: ISummary[] = [];
 
     if (dataToPrepare?.data.length) {

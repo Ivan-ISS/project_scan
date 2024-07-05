@@ -25,15 +25,15 @@ export const fetchUserInfo = createAsyncThunk<IUserInfoResponse, FetchUserInfoAr
 
             if (!response.ok) {
                 const error = await response.json();
-                console.log('Ошибка ответа (статус не 200): ', error);
+                // console.log('Ошибка ответа (статус не 200): ', error);
                 return thunkAPI.rejectWithValue({ message: error } as FetchUserInfoError);
             }
 
             const data: IUserInfoResponse = await response.json();
-            console.log('Данные с сервера: ', data);
+            // console.log('Данные с сервера: ', data);
             return data;
         } catch (error) {
-            console.log('Ошибки асинхроннго кода: ', error);
+            // console.log('Ошибки асинхроннго кода: ', error);
             return thunkAPI.rejectWithValue({ message: error } as FetchUserInfoError);
         }
     }
@@ -74,7 +74,7 @@ export const userSlice = createSlice({
                 state.userInfo = action.payload;
                 state.userName = 'Арнольд';
                 state.userTariff = 'Beginner';
-                console.log('state.eventFiltersInfo: ', state.userInfo);
+                // console.log('state.eventFiltersInfo: ', state.userInfo);
             }).
             addCase(fetchUserInfo.rejected, (state, action: PayloadAction<FetchUserInfoError | undefined>) => {
                 state.status = 'download failed';

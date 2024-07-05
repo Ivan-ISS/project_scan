@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IDocuments, IContentResponse, IContent } from '../../../types/scanTypes';
+import { fetchDocuments } from '../documentsSlice/documentsSlice';
 import { prepareDocsToRequest } from '../../../utils/prepareDocsToRequest';
 import routes from '../../../routes';
 
@@ -27,15 +28,15 @@ export const fetchContent = createAsyncThunk<IContentResponse[], FetchContentArg
 
             if (!response.ok) {
                 const error = await response.json();
-                console.log('Ошибка ответа (статус не 200): ', error);
+                // console.log('Ошибка ответа (статус не 200): ', error);
                 return thunkAPI.rejectWithValue({ message: error } as FetchContentError);
             }
 
             const data = response.json();
-            console.log('Данные с сервера: ', data);
+            // console.log('Данные с сервера: ', data);
             return data;
         } catch (error) {
-            console.log('Ошибки асинхроннго кода: ', error);
+            // console.log('Ошибки асинхроннго кода: ', error);
             return thunkAPI.rejectWithValue({ message: error } as FetchContentError);
         }
     }
@@ -43,6 +44,7 @@ export const fetchContent = createAsyncThunk<IContentResponse[], FetchContentArg
 
 export interface IState {
     contentData: IContent[];
+    initialLoadCheck: boolean;
     status: 'not started' | 'in progress' | 'successfully' | 'download failed';
     error: string;
 }
@@ -51,13 +53,12 @@ export const contentSlice = createSlice({
     name: 'content',
     initialState: {
         contentData: [],
+        initialLoadCheck: true,
         status: 'not started',
         error: '',
     } as IState,
     reducers: {
-        resetContentData: (state) => {
-            state.contentData = [];
-        }
+
     },
     extraReducers: (builder) => {
         builder.
@@ -66,11 +67,14 @@ export const contentSlice = createSlice({
             }).
             addCase(fetchContent.fulfilled, (state, action: PayloadAction<IContentResponse[]>) => {
                 state.status = 'successfully';
-                console.log('state.contentData before: ', state.contentData);
-                console.log('state.contentData before lenght: ', state.contentData.length);
+                console.log('state.initialLoadCheck: ', state.initialLoadCheck);
+                if (state.initialLoadCheck) {
+                    state.contentData = JSON.parse(JSON.stringify([]));     // сбрасываем contentData при первичной загрузке
+                }
                 for (let i = 0; i < action.payload.length; i++) {
                     state.contentData = [ ... state.contentData, action.payload[i]];
                 }
+                state.initialLoadCheck = false;
                 console.log('state.contentData: ', state.contentData);
             }).
             addCase(fetchContent.rejected, (state, action: PayloadAction<FetchContentError | undefined>) => {
@@ -78,8 +82,10 @@ export const contentSlice = createSlice({
                 if (action.payload) {
                     state.error = action.payload.message;
                 }
+            }).
+            addCase(fetchDocuments.fulfilled, (state) => {     // слушатель загрузки ids - если вновь загрузились - то загрузку считаем первичной
+                state.initialLoadCheck = true;
+                state.contentData = JSON.parse(JSON.stringify([]));
             });
     }
 });
-
-export const { resetContentData } = contentSlice.actions;

@@ -9,7 +9,7 @@
     height: 50px;
     width: 50px;
 }
-  
+
 .dot::before {
     content: '';
     height: 20%;
@@ -18,9 +18,9 @@
     border: 2px solid gray;
     background-color: #fff;
     transform: scale(0.65);
-    animation: pulsation 1s ease-in-out infinite;
+    animation: pulsation 0.75s ease-in-out infinite;
 }
-  
+
 .dot {
     position: absolute;
     top: 0;
@@ -31,63 +31,63 @@
     height: 100%;
     width: 100%;
 }
-  
+
 .dot:nth-child(2) {
     transform: rotate(45deg);
 }
-  
+
 .dot:nth-child(3) {
     transform: rotate(90deg);
 }
-  
+
 .dot:nth-child(4) {
     transform: rotate(135deg);
 }
-  
+
 .dot:nth-child(5) {
     transform: rotate(180deg);
 }
-  
+
 .dot:nth-child(6) {
     transform: rotate(225deg);
 }
-  
+
 .dot:nth-child(7) {
     transform: rotate(270deg);
 }
-  
+
 .dot:nth-child(8) {
     transform: rotate(315deg);
 }
-  
+
 .dot:nth-child(2)::before {
-    animation-delay: calc(1s * 0.125);
+    animation-delay: calc(0.75s * 0.125);
 }
-  
+
 .dot:nth-child(3)::before {
-    animation-delay: calc(1s * 0.250);
+    animation-delay: calc(0.75s * 0.250);
 }
-  
+
 .dot:nth-child(4)::before {
-    animation-delay: calc(1s * 0.375);
+    animation-delay: calc(0.75s * 0.375);
 }
-  
+
 .dot:nth-child(5)::before {
-    animation-delay: calc(1s * 0.500);
+    animation-delay: calc(0.75s * 0.500);
 }
-  
+
 .dot:nth-child(6)::before {
-    animation-delay: calc(1s * 0.625);
+    animation-delay: calc(0.75s * 0.625);
 }
-  
+
 .dot:nth-child(7)::before {
-    animation-delay: calc(1s * 0.750);
+    animation-delay: calc(0.75s * 0.750);
 }
-  
+
 .dot:nth-child(8)::before {
-    animation-delay: calc(1s * 0.875);
+    animation-delay: calc(0.75s * 0.875);
 }
-  
+
 @keyframes pulsation {
     0%,
     100% {
@@ -98,5 +98,13 @@
     50% {
         transform: scale(1);
         background: white;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .loader {
+        width: 36px;
+        height: 36px;
     }
 }

@@ -8,6 +8,7 @@ import Picture from '../Common/Picture/picture';
 import TransperentButton from '../Common/Buttons/TransperentButton/transperentButton';
 import AccountForm from '../AccountForm/accountForm';
 import IconButton from '../Common/Buttons/IconButton/iconButton';
+import Loader from '../Common/Loader/loader';
 
 export default function AccountMenu() {
     const dispatch = useAppDispatch();
@@ -27,7 +28,7 @@ export default function AccountMenu() {
             <AccountForm fields={logUpFormFields} hasError={authError !== ''} error={authError} handleAuthFormSubmit={handleFormSubmit}/>
             { 
                 authStatus === 'in progress'
-                ? <div style={{ minHeight: '65px', textAlign: 'center' }}>...loading</div>
+                ? <Loader style={{ alignSelf: 'center', width: '24px', height: '24px', marginTop: '10px' }}/>
                 : <button className={styles.restorePasswordButton}>{buttonName.restorePassword}</button>
             }
             <div className={styles.bottomPanel}>

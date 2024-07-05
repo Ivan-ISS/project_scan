@@ -27,15 +27,15 @@ export const fetchDocuments = createAsyncThunk<IDocumentsResponse, FetchDocument
 
             if (!response.ok) {
                 const error = await response.json();
-                console.log('Ошибка ответа (статус не 200): ', error);
+                // console.log('Ошибка ответа (статус не 200): ', error);
                 return thunkAPI.rejectWithValue({ message: error } as FetchDocumentsError);
             }
 
             const data = response.json();
-            console.log('Данные с сервера: ', data);
+            // console.log('Данные с сервера: ', data);
             return data;
         } catch (error) {
-            console.log('Ошибки асинхроннго кода: ', error);
+            // console.log('Ошибки асинхроннго кода: ', error);
             return thunkAPI.rejectWithValue({ message: error } as FetchDocumentsError);
         }
     }
@@ -66,6 +66,9 @@ export const documentsSlice = createSlice({
         },
         resetLazyNumber: (state) => {
             state.lazyNumber = 10;
+        },
+        resetDocumentsData: (state) => {
+            state.documentsData = [];
         }
     },
     extraReducers: (builder) => {
@@ -77,7 +80,7 @@ export const documentsSlice = createSlice({
                 state.status = 'successfully';
                 state.documentsData = action.payload.items;
                 state.lazyLimit = state.documentsData.length;
-                console.log('state.documentsData: ', state.documentsData);
+                // console.log('state.documentsData: ', state.documentsData);
             }).
             addCase(fetchDocuments.rejected, (state, action: PayloadAction<FetchDocumentsError | undefined>) => {
                 state.status = 'download failed';
@@ -88,4 +91,4 @@ export const documentsSlice = createSlice({
     }
 });
 
-export const { increaseLazyNumber, resetLazyNumber } = documentsSlice.actions;
+export const { increaseLazyNumber, resetLazyNumber, resetDocumentsData } = documentsSlice.actions;
