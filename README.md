@@ -1,6 +1,6 @@
 # project_scan / "СКАН"
 
-**Ссылка для просмотра проекта:** ***https://project-book-store-frontend.vercel.app/***
+**Ссылка для просмотра проекта:** ***https://project-scan-dip.vercel.app/***
 <br><br><br>
 
 **Для запуска проекта (на своем устройстве) выполнить действия в терминале:**
@@ -172,4 +172,4 @@ npm run build
 npx serve -s dist
 ```
 
-**Ссылка для просмотра проекта:** ***https://project-book-store-frontend.vercel.app/***
+**Ссылка для просмотра проекта:** ***https://project-scan-dip.vercel.app/***
