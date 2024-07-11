@@ -1,6 +1,7 @@
 import styles from '../../styles/pageStyles/results.module.scss';
 import { titleContent, imagePaths, buttonName } from '../../data';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { selectTokenAccess } from '../../redux/slices/authSlice/authSelector';
 import { selectPublicationSummary } from '../../redux/slices/summarySlice/summarySelector';
@@ -20,6 +21,7 @@ import PrimaryButton from '../Common/Buttons/PrimaryButton/primaryButton';
 import routes from '../../routes';
 
 export default function Results() {
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const publicationSummary = useAppSelector(selectPublicationSummary);
     const documentsData = useAppSelector(selectDocumentsDate);
@@ -39,10 +41,13 @@ export default function Results() {
     }, [dispatch, documentsData, tokenAccess]);
 
     const hendleLazyLoad = () => {
-        // dispatch(increaseLazyNumber());
         console.log('lazyNumber: ', lazyNumber, ' lazyStep: ', lazyStep);
         dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData.slice(lazyNumber - lazyStep, lazyNumber) }));
         dispatch(increaseLazyNumber());
+    };
+
+    const handleLink = () => {
+        navigate(routes.search());
     };
 
     return (
@@ -82,7 +87,7 @@ export default function Results() {
                     (documentsStatus === 'successfully' && contentStatus === 'successfully' && documentsData.length === 0)) &&
                     <div className={styles.alternative}>
                         <p>Нет найденных вариантов.</p>
-                        <a href={routes.search()} className={styles.link}>Измените параметры запроса</a>
+                        <div className={styles.link} onClick={handleLink}>Измените параметры запроса</div>
                     </div>
                 }
                 {
