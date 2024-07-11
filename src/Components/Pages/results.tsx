@@ -34,12 +34,15 @@ export default function Results() {
     useEffect(() => {
         if (documentsData.length) {
             dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData.slice(lazyNumber - lazyStep, lazyNumber) }));
+            dispatch(increaseLazyNumber());
         }
     }, [dispatch, documentsData, tokenAccess]);
 
     const hendleLazyLoad = () => {
-        dispatch(increaseLazyNumber());
+        // dispatch(increaseLazyNumber());
+        console.log('lazyNumber: ', lazyNumber, ' lazyStep: ', lazyStep);
         dispatch(fetchContent({ tokenAccess: tokenAccess, requestData: documentsData.slice(lazyNumber - lazyStep, lazyNumber) }));
+        dispatch(increaseLazyNumber());
     };
 
     return (
@@ -70,19 +73,20 @@ export default function Results() {
                     <PublicationList publications={contentData}/>
                 {
                     ((contentStatus === 'in progress' || documentsStatus === 'in progress') ||
-                    (contentStatus === 'successfully' && contentData.length === 0)) &&
+                    (contentStatus === 'successfully' && documentsData.length !== 0 && contentData.length === 0)) &&
                     <Loader style={{ alignSelf: 'center' }}/>
                 }
                 {
                     ((documentsStatus === 'successfully' && contentStatus === 'not started' && contentData.length === 0) ||
-                    (documentsStatus === 'not started' && contentStatus === 'not started' && contentData.length === 0)) &&
+                    (documentsStatus === 'not started' && contentStatus === 'not started' && contentData.length === 0) ||
+                    (documentsStatus === 'successfully' && contentStatus === 'successfully' && documentsData.length === 0)) &&
                     <div className={styles.alternative}>
                         <p>Нет найденных вариантов.</p>
                         <a href={routes.search()} className={styles.link}>Измените параметры запроса</a>
                     </div>
                 }
                 {
-                    lazyNumber < lazyLimit &&
+                    lazyNumber < lazyLimit + lazyStep &&
                     <PrimaryButton
                         style={{ alignSelf: 'center', maxWidth: '305px' }}
                         text={buttonName.lazyLoad}
